@@ -1,8 +1,16 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
 a {
   color: #00B7FF;
+}
+header {
+  background-color: red;
+  padding: 5em;
+}
+footer {
+  background: black;
+  padding: 5em;
+}
+.map {
+  background-color: blue;
+  height: 70vh;
+  width: 50rem;
 }
