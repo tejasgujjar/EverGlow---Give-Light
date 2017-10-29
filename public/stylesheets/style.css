@@ -6,13 +6,59 @@ body {
 a {
   color: #00B7FF;
 }
-
-header{
-  height:30px;
-  background-color: grey;
-  border: 2px;
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
 }
-
+.master-video-wrapper {
+  overflow: hidden;
+  position: relative;
+  /*background-image: url('images/header-bg.png');*/
+  /*background-size: cover;
+  background-position: center;*/
+}
+.master-video{
+width: 100%;
+height: auto;
+}
+#divCheckbox {
+    display: none;
+}
+.master-body{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  height: 120px;
+  line-height: 1;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  color: #fff;
+}
+.master-title {
+  font-size: 50px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.master-sub-title {
+  margin: 20px 0 50px 0;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+header{
+  background-color: red;
+  padding: 5em;
+}
+.map {
+  background-color: blue;
+  height: 70vh;
+  width: 50rem;
+}
+#filter {
+  background-color: white;
+}
 footer {
   position: absolute;
   right: 0;
