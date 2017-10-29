@@ -51,6 +51,7 @@ app.get('/check-status',vol.checkstatus);
 app.post('/send_mail',email.email_check);
 app.get('/searchall',vol.searchall);
 app.get('/searchone',vol.searchone);
+app.get('/searchhome',vol.searchhome);
 
 app.get('/field_details',field_search.field_details);
 
