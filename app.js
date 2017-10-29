@@ -5,26 +5,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+//var mongoose = require('mongoose');
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
 
 var routes = require('./routes/index');
 var vol = require('./routes/volunteers.js');
-//var routes = require('./routes/index');
-//require('./routes/mongodb.js').createrconnectionpool();
-//mysqlconn.createPool();
 var http = require('http');
-
 var app = express();
-
-
-//var routes = require('./routes/index');
+var mongoSessionConnectURL = "mongodb://root:root@ds229435.mlab.com:29435/user_db";
 //
-// all environments
+
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-////app.use(express.favicon());
 app.use(logger('dev'));
-//app.use(express.logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -47,4 +42,17 @@ app.get('/check-status',vol.checkstatus);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+});
+/*
+mongoose.connect(mongoSessionConnectURL, function(){
+  console.log('Connected to mongo at: ' + mongoSessionConnectURL);
+  http.createServer(app).listen(app.get('port'), function(){
+    console.log('Express server listening on port ' + app.get('port'));
+  });
+});
+*/
+MongoClient.connect(mongoSessionConnectURL, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected correctly to server.");
+  db.close();
 });
