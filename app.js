@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 //var mongoose = require('mongoose');
 
 
@@ -37,8 +38,8 @@ app.get('/', function(req, res) {
 
 app.get('/check-status',vol.checkstatus);
 app.get('/searchall',vol.searchall);
+app.get('/searchone',vol.searchone);
 
-//app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
