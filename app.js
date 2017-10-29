@@ -26,6 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var field_search = require('./routes/field_search');
+
 
 app.get('/new-page', function(req, res) {
        //res.render('views/new.ejs'); // load the single view file (angular will handle the page changes on the front-end)
@@ -42,7 +44,7 @@ app.get('/check-status',vol.checkstatus);
 app.post('/send_mail',email.email_check);
 app.get('/searchall',vol.searchall);
 app.get('/searchone',vol.searchone);
-
+app.get('/field_details',field_search.field_details);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
