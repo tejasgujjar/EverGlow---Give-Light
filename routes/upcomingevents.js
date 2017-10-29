@@ -10,13 +10,13 @@ var checkstatus = function(req,res){
   .json({"test":"test"});
 };
 
-var mongo_search = function(req,res){
+var get_future_events = function(req,res){
   MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
     console.log("Connected correctly to server.");
   if (err) throw err;
-  var query = { "start_date": { $gte: new Date("2017-10-29T00:00:00Z").toISOString() } };
-  db.collection("events").find(query).toArray(function(err, result) {
+  var query = { "start_time": { $gte: new Date("2017-10-29T11:30:00-0800").toISOString() } };
+  db.collection("events_listr").find(query).toArray(function(err, result) {
     if(err) {
       console.log(err);
       return;
@@ -28,8 +28,28 @@ var mongo_search = function(req,res){
        db.close();
   });
 });
+};
 
+var get_past_events = function(req,res){
+  MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    console.log("Connected correctly to server.");
+  if (err) throw err;
+  var query = { "start_time": { $lte: new Date("2017-10-29T11:30:00-0800").toISOString() } };
+  db.collection("events_listr").find(query).toArray(function(err, result) {
+    if(err) {
+      console.log(err);
+      return;
+      }
+
+      res
+      .status(200)
+      .json({"test":result});
+       db.close();
+  });
+});
 };
 
 exports.checkstatus = checkstatus;
-exports.mongo_search = mongo_search;
+exports.get_future_events = get_future_events;
+exports.get_past_events = get_past_events;

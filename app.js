@@ -57,7 +57,9 @@ app.get('/searchhome',vol.searchhome);
 app.get('/field_details',field_search.field_details);
 
 app.get('/mongo_check',upcomingevents.checkstatus);
-app.get('/mongo_search',upcomingevents.mongo_search);
+app.get('/get_future_events',upcomingevents.get_future_events);
+app.get('/get_past_events',upcomingevents.get_past_events);
+
 app.post('/locationdetails',locationdetails.locationquery);
 app.get('/getlocationdetails',locationdetails.getlocationquery);
 
