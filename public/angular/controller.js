@@ -24,7 +24,7 @@ myApp.controller('HomeController',['$scope','$http','$location',function($scope,
 function AdvancedCtrl() {
   /* jshint validthis: true */
   var vm = this;
-  $scope.speed = 4;
+  $scope.speed = 3;
   $scope.getPointClass = getPointClass;
   $scope.getPointRadius = getPointRadius;
   activate();
@@ -33,7 +33,7 @@ $scope.test = "yashas";
 
   function activate() {
     console.log("lets testttt");
-    var randomPoints = _.map(_.range(30), function() {
+    /*var randomPoints = _.map(_.range(30), function() {
       console.log("test");
       return {
         myId       : 'ultraId-' + _.uniqueId(),
@@ -43,7 +43,24 @@ $scope.test = "yashas";
         },
         myCategory : ['nicePlaces', 'uglyPlaces', 'aliens'][_.random(2)]
       };
-    });
+    });*/
+
+   randomPoints = [{
+     myId       : 'ultraId-' + _.uniqueId(),
+     myPosition : {
+       lat : 40.748817,
+       lng : -73.985428
+     },
+     myCategory : ['nicePlaces', 'uglyPlaces', 'aliens'][_.random(2)]
+   },{
+     myId       : 'ultraId-' + _.uniqueId(),
+     myPosition : {
+       lat : 37.773972,
+       lng : -122.431297
+     },
+     myCategory : ['nicePlaces', 'uglyPlaces', 'aliens'][_.random(2)]
+   }];
+
     $scope.points = [
       {
         values : randomPoints
