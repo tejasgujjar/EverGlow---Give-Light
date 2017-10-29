@@ -13,6 +13,7 @@ var routes = require('./routes/index');
 var vol = require('./routes/volunteers.js');
 var email = require('./routes/email.js');
 var upcomingevents = require('./routes/upcomingevents.js');
+var locationdetails = require('./routes/getlocation.js');
 var http = require('http');
 var app = express();
 var mongoSessionConnectURL = "mongodb://root:root@ds229435.mlab.com:29435/user_db";
@@ -57,6 +58,8 @@ app.get('/field_details',field_search.field_details);
 
 app.get('/mongo_check',upcomingevents.checkstatus);
 app.get('/mongo_search',upcomingevents.mongo_search);
+app.get('/locationdetails',locationdetails.locationquery);
+
 
 
 http.createServer(app).listen(app.get('port'), function(){
