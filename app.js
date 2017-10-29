@@ -6,8 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var mongoose = require('mongoose');
-var MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
+
 
 var routes = require('./routes/index');
 var vol = require('./routes/volunteers.js');
@@ -37,6 +36,7 @@ app.get('/', function(req, res) {
    });
 
 app.get('/check-status',vol.checkstatus);
+//app.get('/searchall',vol.searchall);
 
 //app.get('/users', user.list);
 
@@ -51,8 +51,3 @@ mongoose.connect(mongoSessionConnectURL, function(){
   });
 });
 */
-MongoClient.connect(mongoSessionConnectURL, function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected correctly to server.");
-  db.close();
-});
