@@ -6,8 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var mongoose = require('mongoose');
-var MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
+
 
 var routes = require('./routes/index');
 var vol = require('./routes/volunteers.js');
@@ -38,7 +37,10 @@ app.get('/', function(req, res) {
    });
 
 app.get('/check-status',vol.checkstatus);
+
 app.post('/send_mail',email.email_check);
+app.get('/searchall',vol.searchall);
+
 //app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
