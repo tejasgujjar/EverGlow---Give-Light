@@ -36,7 +36,7 @@ app.get('/', function(req, res) {
    });
 
 app.get('/check-status',vol.checkstatus);
-//app.get('/searchall',vol.searchall);
+app.get('/searchall',vol.searchall);
 
 //app.get('/users', user.list);
 
