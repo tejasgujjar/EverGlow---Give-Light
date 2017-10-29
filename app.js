@@ -51,8 +51,8 @@ mongoose.connect(mongoSessionConnectURL, function(){
   });
 });
 */
-MongoClient.connect(mongoSessionConnectURL, function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected correctly to server.");
-  db.close();
-});
+// MongoClient.connect(mongoSessionConnectURL, function(err, db) {
+//   assert.equal(null, err);
+//   console.log("Connected correctly to server.");
+//   db.close();
+// });
