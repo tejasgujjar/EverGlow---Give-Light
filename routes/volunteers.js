@@ -24,7 +24,7 @@ var searchall = function(req,res){
     console.log("Connected correctly to server.");
     myCollection = db.collection('user_db');
 
-    myCollection.find({$or: [{ "Email Address": req.query.search }, { "Name": req.query.search}]})
+    myCollection.find()
 		.toArray(function(err,ans1){
 
             if(err) {

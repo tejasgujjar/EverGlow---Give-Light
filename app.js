@@ -66,4 +66,3 @@ mongoose.connect(mongoSessionConnectURL, function(){
   console.log("Connected correctly to server.");
   db.close();
 });*/
-
