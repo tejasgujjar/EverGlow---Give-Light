@@ -24,7 +24,33 @@ var searchall = function(req,res){
     console.log("Connected correctly to server.");
     myCollection = db.collection('user_db');
 
-    myCollection.find({$or: [{ "Email Address": req.query.search }, { "Name": req.query.search}]})
+    myCollection.find()
+		.toArray(function(err,ans1){
+
+            if(err) {
+            	console.log(err);
+            	return;
+            	}
+
+              res
+              .status(200)
+              .json({"test":ans1});
+               db.close();
+    });
+  });
+};
+
+
+var searchhome = function(req,res){
+  console.log("Inside searchhome");
+  //console.log(req.query.search);
+
+  MongoClient.connect(mongoSessionConnectURL, function(err, db) {
+    assert.equal(null, err);
+    console.log("Connected correctly to server.");
+    myCollection = db.collection('user_db');
+
+    myCollection.find()
 		.toArray(function(err,ans1){
 
             if(err) {
@@ -69,3 +95,4 @@ var searchone = function(req,res){
 exports.checkstatus = checkstatus;
 exports.searchall = searchall;
 exports.searchone = searchone;
+exports.searchhome = searchhome;

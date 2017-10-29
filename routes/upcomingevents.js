@@ -15,7 +15,7 @@ var mongo_search = function(req,res){
     assert.equal(null, err);
     console.log("Connected correctly to server.");
   if (err) throw err;
-  var query = { "start_date": { $gte: new Date("2020-12-22T00:00:00Z").toISOString() } };
+  var query = { "start_date": { $gte: new Date("2017-10-29T00:00:00Z").toISOString() } };
   db.collection("events").find(query).toArray(function(err, result) {
     if(err) {
       console.log(err);

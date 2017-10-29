@@ -1,0 +1,33 @@
+<md-card class="volunteer-card">
+  <span>
+    <!-- <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)"> -->
+      <md-card-title>
+        <md-card-title-media class="volunteer-profile-pic">
+          <div class="md-media-sm card-media" layout>
+            <md-icon md-svg-icon="/images/user.svg" style="color:grey"></md-icon>
+          </div>
+        </md-card-title-media>
+        <md-card-title-text>
+          <span class="volunteer-name" >{{name}}</span>
+          <span>
+            <span class="md-subhead description volunteer-address">{{address}}</span>
+            <span class="md-subhead description volunteer-address"><span class="divider">|</span>{{contactno}}</span>
+          </span>
+        </md-card-title-text>
+        <md-card-title-media class="volunteer-actions">
+          <!-- <md-button class="md-fab md-mini md-warn md-color-grey" aria-label="Use Android">
+            <md-tooltip md-direction="bottom">Show detail</md-tooltip>
+            <md-icon md-svg-src="/images/information.svg" style="color: greenyellow;"></md-icon>
+          </md-button> -->
+          <md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+            <md-tooltip md-direction="bottom">Send email</md-tooltip>
+            <md-icon md-svg-src="/images/paper-plane-l.svg" style="color: greenyellow;"></md-icon>
+          </md-button>
+        </md-card-title-media>
+        <!-- <md-card-title-text>
+
+        </md-card-title-text> -->
+      </md-card-title>
+    <!-- </md-checkbox> -->
+  </span>
+</md-card>
