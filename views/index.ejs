@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
  <head>
-   <title><%= title %></title>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"> </script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"> </script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+   <title>GiveLight</title>
+   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"> </script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"> </script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <!-- Angular Material Library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
    <script src="angular/controller.js"></script>
    <link rel='stylesheet' href='/stylesheets/style.css' />
  </head>
- <body ng-controller="directoryController">
-   <h1><%= title %></h1>
-   <p>Welcome to <%= title %></p>
+ <body>
+   <ng-view></ng-view>
+   <footer>
+      @ Copyright 2017. All rights reserved. 
+   </footer>
  </body>
 </html>
