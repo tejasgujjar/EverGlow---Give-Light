@@ -58,8 +58,8 @@ app.get('/field_details',field_search.field_details);
 
 app.get('/mongo_check',upcomingevents.checkstatus);
 app.get('/mongo_search',upcomingevents.mongo_search);
-app.get('/locationdetails',locationdetails.locationquery);
-
+app.post('/locationdetails',locationdetails.locationquery);
+app.get('/getlocationdetails',locationdetails.getlocationquery);
 
 
 http.createServer(app).listen(app.get('port'), function(){
