@@ -4,7 +4,7 @@ var ejs = require('ejs');
 var MongoClient = require('mongodb').MongoClient;
 var db;
 var connected = false;
-var mongoURL = 'mongodb://suhas262:everglow2017@ds229435.mlab.com:29435/user_db';
+var mongoURL = 'mongodb://root:root@ds229435.mlab.com:29435/user_db';
 var connectionList = [];
 var requestList = [];
 

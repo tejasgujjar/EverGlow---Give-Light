@@ -1,34 +1,49 @@
+var express = require('express');
+var session = require('express-session');//session testing
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
-/**
- * Module dependencies.
- */
-
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
+var routes = require('./routes/index');
+var vol = require('./routes/volunteers.js');
+//var routes = require('./routes/index');
+//require('./routes/mongodb.js').createrconnectionpool();
+//mysqlconn.createPool();
+var http = require('http');
 
 var app = express();
+
+
+//var routes = require('./routes/index');
 //
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
+app.set('view engine', 'ejs');
+////app.use(express.favicon());
+app.use(logger('dev'));
+//app.use(express.logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/new-page', function(req, res) {
+       //res.render('views/new.ejs'); // load the single view file (angular will handle the page changes on the front-end)
+       res.render('new');
+   });
+
+app.get('/', function(req, res) {
+       //res.render('views/new.ejs'); // load the single view file (angular will handle the page changes on the front-end)
+       res.render('index', { title: 'Express' });
+   });
+
+app.get('/check-status',vol.checkstatus);
+
+//app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
