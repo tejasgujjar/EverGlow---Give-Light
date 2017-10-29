@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var vol = require('./routes/volunteers.js');
+var email = require('./routes/email.js');
 var http = require('http');
 var app = express();
 var mongoSessionConnectURL = "mongodb://root:root@ds229435.mlab.com:29435/user_db";
@@ -36,6 +37,8 @@ app.get('/', function(req, res) {
    });
 
 app.get('/check-status',vol.checkstatus);
+
+app.post('/send_mail',email.email_check);
 app.get('/searchall',vol.searchall);
 
 //app.get('/users', user.list);
@@ -51,3 +54,8 @@ mongoose.connect(mongoSessionConnectURL, function(){
   });
 });
 */
+/*MongoClient.connect(mongoSessionConnectURL, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected correctly to server.");
+  db.close();
+});*/
