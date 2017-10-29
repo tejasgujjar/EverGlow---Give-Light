@@ -41,16 +41,23 @@ height: auto;
   font-weight: 500;
   margin-top: 10px;
 }
+.title{
+  padding: 20px;
+}
+.videoContainer {
+  height: 350px;
+  width: 100%;
+}
 .master-sub-title {
   margin: 20px 0 50px 0;
   font-size: 20px;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
 }
-header{
+/*header{
   background-color: red;
   padding: 5em;
-}
+} */
 .map {
   background-color: blue;
   height: 70vh;
@@ -59,8 +66,13 @@ header{
 #filter {
   background-color: white;
 }
+.bottom-left {
+  position: relative;
+  bottom: 100px;
+  padding-top: 50px;
+}
 footer {
-  position: absolute;
+  position: realtive;
   right: 0;
   bottom: 0;
   left: 0;
