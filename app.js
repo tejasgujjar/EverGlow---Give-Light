@@ -31,6 +31,11 @@ app.get('/new-page', function(req, res) {
        res.render('new');
    });
 
+ app.get('/search', function(req, res) {
+        //res.render('views/new.ejs'); // load the single view file (angular will handle the page changes on the front-end)
+        res.render('search');
+    });
+
 app.get('/', function(req, res) {
        //res.render('views/new.ejs'); // load the single view file (angular will handle the page changes on the front-end)
        res.render('index', { title: 'Express' });
