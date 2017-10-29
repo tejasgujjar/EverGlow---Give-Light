@@ -24,6 +24,7 @@
     "morgan": "~1.7.0",
     "mysql": "^2.11.1",
     "mysql-insert-multiple": "^1.0.3",
+    "nodemailer": "^4.3.1",
     "prettyjson": "^1.2.1",
     "request": "^2.75.0",
     "serve-favicon": "~2.3.0",
