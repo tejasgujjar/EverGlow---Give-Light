@@ -1,4 +1,22 @@
 <div>
   <md-button class="md-raised md-primary" ng-click="go('/search')">Primary</md-button>
 
+  <m2s-globe
+    points="points"
+    point-lat="d.myPosition.lat"
+    point-lng="d.myPosition.lng"
+    raised-land="false"
+    point-id="d.myId"
+    point-radius="getPointRadius(d)"
+    point-class="getPointClass(d)"
+    rotate="true"
+    rotate-speed=speed
+    class="advanced-globe"
+    enter-anim-delay="i * 80"
+    map-type="countries"
+    clickable="false"
+    graticule="false">
+</m2s-globe>
+
+
 </div>
