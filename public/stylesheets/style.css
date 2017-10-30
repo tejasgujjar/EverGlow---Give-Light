@@ -60,7 +60,7 @@ md-tooltip{
   font-size: 10px;
 }
 .volunteer-list-div{
-  height: 30em;
+  min-height: 30em;
 }
 .search-content{
   margin: 0px 6%;
@@ -103,4 +103,13 @@ md-tooltip{
   fill: #009688;
   stroke: #009688;
   stroke-width: 30;
+}
+.search-input-box input{
+  background-color: white;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 0.7em;
+}
+.search-input-box{
+  margin: 0px
 }
