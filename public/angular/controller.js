@@ -75,6 +75,28 @@ $scope.test = "yashas";
      myCategory : ['nicePlaces', 'uglyPlaces', 'aliens'][_.random(2)]
    }];
 
+
+   $http({
+         method: 'GET',
+         url: '/getlocationdetails'
+        }).then(function (success){
+           console.log("Success");
+           console.log(success.data.test);
+           for(var i =0;i<success.data.test.length;i++){
+             //console.log(i);
+             randomPoints.push({
+               myId       : 'ultraId-' + _.uniqueId(),
+               myPosition : {
+                 lat : success.data.test[i].latitude,
+                 lng : success.data.test[i].longitude
+               },
+               myCategory : ['nicePlaces', 'uglyPlaces', 'aliens'][_.random(2)]
+             });
+           }
+        },function (error){
+           console.log("Failure");
+       });
+
     $scope.points = [
       {
         values : randomPoints
