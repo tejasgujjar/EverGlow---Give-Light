@@ -1,0 +1,58 @@
+<md-content layout-padding>
+    <div>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>Tell us about yourself</h2>
+          <span flex></span>
+          <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="images/close.svg" aria-label="Close dialog"></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+      <form name="userForm">
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Name</label>
+            <input ng-model="user.firstName">
+          </md-input-container>
+        </div>
+        <md-input-container class="md-block">
+          <label>Address</label>
+          <input ng-model="user.address">
+        </md-input-container>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>City</label>
+            <input ng-model="user.city">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>State</label>
+            <md-select ng-model="user.state">
+              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                {{state.abbrev}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Postal Code</label>
+            <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
+                   required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+            <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">You must supply a postal code.</div>
+              <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                code.
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+        <md-dialog-actions layout="row">
+          <md-button  target="_blank" md-autofocus>
+            Submit
+          </md-button>
+          <span flex></span>
+        </md-dialog-actions>
+      </form>
+    </div>
+  </md-content>
