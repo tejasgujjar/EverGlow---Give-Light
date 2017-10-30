@@ -12,13 +12,29 @@
 
     <md-dialog-content>
       <div class="md-dialog-content">
-          Add filter content here
+
+      <md-input-container>
+        <label>Location</label>
+        <input ng-model="location1" type="email">
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <label>Skills</label>
+        <input ng-model="skills" type="email">
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <label>Event</label>
+        <input ng-model="event" type="email">
+      </md-input-container>
+
       </div>
-    </md-dialog-content>
+
+
 
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button class="md-raised md-primary" ng-click="answer('not useful')">
+      <md-button class="md-raised md-primary" ng-click="answer(location)">
        Submit
       </md-button>
       <md-button class="md-warn" ng-click="answer('useful')">
