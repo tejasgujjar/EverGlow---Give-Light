@@ -1,4 +1,4 @@
-<md-dialog aria-label="Mango (Fruit)">
+<md-dialog aria-label="Mango (Fruit)" class="wdth70">
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -12,14 +12,30 @@
 
     <md-dialog-content>
       <div class="md-dialog-content">
-          Add filter content here
+          <div class="mail-to-address">
+            <label>To:</label>
+            <md-chips ng-model="mail_recipient_list" readonly="false" md-removable="true"
+              md-enable-chip-edit="true">To:</md-chips>
+          </div>
+          <div class="mail-subject">
+            <md-input-container class="md-block">
+              <label>Subject</label>
+              <input ng-model="mail_subject">
+            </md-input-container>
+          </div>
+          <div class="mail-content">
+            <md-input-container class="md-block">
+              <label>Content</label>
+              <textarea ng-model="mail_content" md-maxlength="350" rows="10" md-select-on-focus></textarea>
+            </md-input-container>
+          </div>
       </div>
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
       <span flex></span>
       <md-button class="md-raised md-primary" ng-click="answer('not useful')">
-       Submit
+       Send
       </md-button>
       <md-button class="md-warn" ng-click="answer('useful')">
         Cancel

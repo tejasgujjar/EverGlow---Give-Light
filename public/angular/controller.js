@@ -13,23 +13,30 @@ myApp.config(function($routeProvider) {
 });
 console.log("Loading main page");
 
-myApp.directive('regularCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'views/regularCard.tmpl.html',
-      scope: {
-        name: '@',
-        address: '@',
-        contactno: '@',
-      }
-    }
-  })
+// myApp.directive('regularCard', function () {
+//     return {
+//       restrict: 'E',
+//       templateUrl: 'views/regularCard.tmpl.html',
+//       scope: {
+//         name: '@',
+//         address: '@',
+//         contactno: '@',
+//         showMailTemplateC: "&showMailTemplateC"
+//       },
+//       link:function(scope){
+//         scope.mailtemplate = function(ev){
+//             console.log('directive mail click');
+//             scope.showMailTemplateC({msg:"TEST MSG"});
+//         };
+//       }
+//     }
+//   })
 
 
 myApp.controller('HomeController',['$scope','$http','$location',function($scope,$http,$location){
   $scope.go = function ( path ) {
-  $location.path( path );
-};
+    $location.path( path );
+  };
 
 
 
@@ -132,92 +139,40 @@ AdvancedCtrl();
 
 myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDialog',function($scope,$http,$q, $timeout,$mdDialog){
   console.log("search controller");
-  $scope.search_simulateQuery = false;
-  $scope.search_isDisabled    = false;
-
-    // list of `state` value/display objects
-    $scope.search_states        = loadAll();
-    $scope.search_querySearch   = search_querySearch;
-    $scope.search_selectedItemChange = search_selectedItemChange;
-    $scope.search_searchTextChange   = search_searchTextChange;
-    $scope.search_newState = search_newState;
-
-    function search_newState(state) {
-      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    }
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function search_querySearch (query) {
-      var results = query ? $scope.search_states.filter( createFilterFor(query) ) : $scope.search_states,
-          deferred;
-      if ($scope.search_simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function search_searchTextChange(text) {
-      console.log('Text changed to ' + text);
-    }
-
-    function search_selectedItemChange(item) {
-      console.log('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-    }
   $scope.volunteers_list = [];
+  var testdata = [{"_id":"59f57a8d8a207563dd30dc3c","Name":"Elaf","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""},{"_id":"89f57a8d8a207563dd30dc3c","Name":"Tejas","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""}];
+
+
   $scope.get_search_results = function(search_str){
     $http({
 		      method: 'GET',
 		      url: '/searchall?search='+search_str
 			   }).then(function (success){
 			   		console.log("Success");
-			   		console.log(success.data);
+            var data = success.data;
+            var singleobj = data.test[0]
+			   		console.log(data);
             $scope.volunteers_list = success.data.test;
 			   },function (error){
 			   		console.log("Failure");
 				});
   }
-//searchhome
+
+$scope.get_default_search_results = function(){
+  $http({
+        method: 'GET',
+        url: '/searchhome'
+       }).then(function (success){
+          console.log("Success");
+          var data = success.data;
+          var singleobj = data.test[0];
+          console.log(JSON.stringify(singleobj));
+          console.log(success.data);
+          $scope.volunteers_list = success.data.test;
+       },function (error){
+          console.log("Failure");
+      });
+}
 
   function FilterDialogController($scope, $mdDialog) {
     $scope.hide = function() {
@@ -232,6 +187,27 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
       $mdDialog.hide(answer);
     };
   }
+
+  function MailDialogController($scope, $mdDialog) {
+    //$scope.mail_recipient_list = ['tejasgujjar@gmail.com', 'tgusjjar','tejasgujjar@gmail.codm', 'tgujjar','tejadsgujjar@gmail.com', 'tguddjjar','tejasgujddjar@gmail.com', 'tgujddjar','tejasgvvujjar@gmail.com', 'tgujjvar','tejasgujjar@gmail.comv', 'tgujjavvr','tejasgxujjar@gmail.com', 'tguxxjjar'];
+    $scope.mail_recipient_list = ['tejasgujjar@gmail.com', 'tgusjjar','tejasgujjar@gmail.codm'];
+    $scope.mail_subject = "GiveLight Foundation event reminder";
+    var signature = "\n\nThanks and Regards, \nGiveLight Foundation"
+    $scope.mail_content = "Dear Volunteer, \n\nWe are organizing a fundraiser event near your place." + signature;
+
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
+
   $scope.entered_search = function(){
     console.log("searched val: "+$scope.search_val);
     $scope.get_search_results($scope.search_val);
@@ -252,4 +228,25 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
       $scope.status = 'You cancelled the dialog.';
     });
   };
+  $scope.showMailTemplateC = function(ev) {
+    console.log("Show mail template dialog");
+    $mdDialog.show({
+      controller: MailDialogController,
+      templateUrl: 'views/mail-dialog.tmpl.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+  };
+  function load_static_test_data(){
+    $scope.volunteers_list = testdata;
+  }
+  //$scope.get_default_search_results();
+  load_static_test_data();
 }]);
