@@ -137,13 +137,12 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
 
     // list of `state` value/display objects
     $scope.search_states        = loadAll();
-    $scope.search_querySearch   = querySearch;
-    $scope.search_selectedItemChange = selectedItemChange;
-    $scope.search_searchTextChange   = searchTextChange;
+    $scope.search_querySearch   = search_querySearch;
+    $scope.search_selectedItemChange = search_selectedItemChange;
+    $scope.search_searchTextChange   = search_searchTextChange;
+    $scope.search_newState = search_newState;
 
-    $scope.search_newState = newState;
-
-    function newState(state) {
+    function search_newState(state) {
       alert("Sorry! You'll need to create a Constitution for " + state + " first!");
     }
 
@@ -155,7 +154,7 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
      * Search for states... use $timeout to simulate
      * remote dataservice call.
      */
-    function querySearch (query) {
+    function search_querySearch (query) {
       var results = query ? $scope.search_states.filter( createFilterFor(query) ) : $scope.search_states,
           deferred;
       if ($scope.search_simulateQuery) {
@@ -167,11 +166,11 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
       }
     }
 
-    function searchTextChange(text) {
+    function search_searchTextChange(text) {
       console.log('Text changed to ' + text);
     }
 
-    function selectedItemChange(item) {
+    function search_selectedItemChange(item) {
       console.log('Item changed to ' + JSON.stringify(item));
     }
 
@@ -205,17 +204,21 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
         return (state.value.indexOf(lowercaseQuery) === 0);
       };
     }
-  $scope.get_query_results = function(){
+  $scope.volunteers_list = [];
+  $scope.get_search_results = function(search_str){
     $http({
 		      method: 'GET',
-		      url: '/searchall?search=Elaf'
+		      url: '/searchall?search='+search_str
 			   }).then(function (success){
 			   		console.log("Success");
 			   		console.log(success.data);
+            $scope.volunteers_list = success.data.test;
 			   },function (error){
 			   		console.log("Failure");
 				});
   }
+//searchhome
+
   function FilterDialogController($scope, $mdDialog) {
     $scope.hide = function() {
       $mdDialog.hide();
@@ -230,7 +233,8 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
     };
   }
   $scope.entered_search = function(){
-    console.log("entered search");
+    console.log("searched val: "+$scope.search_val);
+    $scope.get_search_results($scope.search_val);
   }
   $scope.showAdvanced = function(ev) {
     console.log("Show advanced filter dialog");
@@ -248,5 +252,4 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
       $scope.status = 'You cancelled the dialog.';
     });
   };
-
 }]);
