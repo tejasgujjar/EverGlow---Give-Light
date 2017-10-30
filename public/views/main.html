@@ -1,16 +1,27 @@
+<div class="md-navbar-tools"-->
+  <span class="logo">
+    <img src="/images/logo_lg-white.png" alt="bizlogo" width="20%"/>
+  </span>
+  <div style="float:right">
+    <a class="mainNavbar" ng-click="showAdvanced()" >about</a>
+  </div>
+  <div style="float:right">
+    <a class="mainNavbar"  ng-click="showContact()">&nbsp;|&nbsp;contact</a>
+  </div>
+  <div style="float:right">
+    <a class="mainNavbar"  ng-click="showDyk()">&nbsp;|&nbsp;Did you Know?</a>
+  </div>
+</div>
 <div>
-
-   <div class="custom">
+  <div class="custom">
      <div class="master-video-wrapper" style="height:100%">
-       <video autoplay="autoplay" class="master-video" loop="loop" >
+       <video autoplay="autoplay" style="height:550px;width:100%;" loop="loop" >
          <source src="videos/bg.mp4" type="video/mp4">
       </video>
       <div class="master-body col-md-10 col-sm-11 col-xs-12" style="opacity: 0.99; filter: blur(0.111111px); transform: translateY(1.42857%);">
            <div class="master-title">Only a life lived for others is worth living</div>
            <div class="master-sub-title">Inspired to inspire</div>
      </div>
-
-
      <div class="bottom-left">
          <m2s-globe
                  points="points"
@@ -35,9 +46,8 @@
  <a class="twitter-timeline"  href="https://twitter.com/hashtag/GiveLightFoundation" data-widget-id="924764337289306112">#GiveLightFoundation Tweets</a>
 
 </div>
-<div id="content" style="display: flex;">
-  <div id="newsFeed">
+  <div id="content" style="display: flex;">
+    <div id="newsFeed">
     <p>newsFeed</p>
   </div>
-
 <md-button ng-click="go('/search')" class="md-raised md-primary">Search Volunteer</md-button>

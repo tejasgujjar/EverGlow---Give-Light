@@ -33,11 +33,37 @@ console.log("Loading main page");
 //   })
 
 
-myApp.controller('HomeController',['$scope','$http','$location',function($scope,$http,$location){
+myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',function($scope,$http,$location,$mdDialog){
   $scope.go = function ( path ) {
     $location.path( path );
   };
 
+  //starts
+  $scope.showAdvanced = function() {
+    $mdDialog.show({
+      controller: 'HomeController',
+      templateUrl: 'views/about.html',
+      clickOutsideToClose:true,
+    })
+  };
+  $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+  $scope.showContact = function() {
+      $mdDialog.show({
+        controller: 'HomeController',
+        templateUrl: 'views/contactus.html',
+        clickOutsideToClose:true,
+      })
+    };
+    $scope.showDyk = function() {
+        $mdDialog.show({
+          controller: 'HomeController',
+          templateUrl: 'views/didYouKnow.html',
+          clickOutsideToClose:true,
+        })
+      };
+  //ends
 
 
 
