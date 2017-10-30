@@ -8,22 +8,9 @@
     <div class="search-toolbar">
       <div class="wrapper-search-toolbar">
         <div class="search-bar">
-          <md-autocomplete
-                ng-disabled="search_isDisabled"
-                md-no-cache="ctrl.noCache"
-                md-selected-item="ctrl.selectedItem"
-                md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-                md-search-text="ctrl.searchText"
-                md-selected-item-change="ctrl.selectedItemChange(item)"
-                md-items="item in ctrl.querySearch(ctrl.searchText)"
-                md-item-text="item.display"
-                md-min-length="0"
-                ng-keyup="entered_search()"
-                placeholder="Search Volunteer">
-              <md-item-template>
-                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
-              </md-item-template>
-          </md-autocomplete>
+          <md-input-container md-no-float class="md-block search-input-box">
+           <input ng-keyup="entered_search()" ng-model="search_val" placeholder="Search Volunteer">
+         </md-input-container>
         </div>
         <div class="filter-bar">
           <md-button ng-click="showAdvanced($event)" class="md-icon-button" aria-label="More">
@@ -37,13 +24,24 @@
           <!-- <md-button class="md-small" ng-href="{{googleUrl}}" target="_blank">Default Link</md-button> -->
       </div>
     </div>
-    <!-- <md-progress-linear md-mode="indeterminate"></md-progress-linear> -->
+    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
   </md-toolbar>
   <md-content flex layout-padding class="search-content">
     <!-- <md-button ng-click="get_query_results()">test</md-button> -->
-    <md-card class="volunteer-list-div">
-      <regular-card name="Tejas Gujjar" address="San Jose" contactno="668-123-2323" md-theme="default"></regular-card>
-      <regular-card name="Kushal Joshi" address="Chicago" contactno="408-678-7665" md-theme="default"></regular-card>
+    <md-card class="volunteer-list-div" >
+      <regular-card ng-repeat="volunteer in volunteers_list" name={{volunteer.Name}} address="{{volunteer.City}}, {{volunteer.State}}, {{volunteer.Country}}" contactno="{{volunteer['Contact Number']}}" md-theme="default"></regular-card>
+      <!-- <regular-card name="Kushal Joshi" address="Chicago" contactno="408-678-7665" md-theme="default"></regular-card> -->
   </md-card>
   </md-content>
 </div>
+<!-- ng-disabled="search_isDisabled"
+md-no-cache="ctrl.noCache"
+md-selected-item="ctrl.selectedItem"
+md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+md-search-text="ctrl.searchText"
+md-selected-item-change="ctrl.selectedItemChange(item)"
+md-items="item in ctrl.querySearch(ctrl.searchText)"
+md-item-text="item.display"
+md-min-length="0"
+ng-keyup="entered_search()"
+placeholder="Search Volunteer"> -->
