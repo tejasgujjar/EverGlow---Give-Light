@@ -60,31 +60,31 @@ var searchall = function(req,res){
 
               var stats = [{
                 "name" : "Governing",
-                "count" : gover
+                "y" : gover
               },
               {
                 "name" : "Operations",
-                "count" : oper
+                "y" : oper
               },
               {
                 "name" : "Marketing",
-                "count" : market
+                "y" : market
               },
               {
                 "name" : "Human Resources",
-                "count" : human
+                "y" : human
               },
               {
                 "name" : "Technology",
-                "count" : tech
+                "y" : tech
               },
               {
                 "name" : "Programs/Outreach",
-                "count" : prog
+                "y" : prog
               },
               {
                 "name" : "Global Homes",
-                "count" : globalSkill
+                "y" : globalSkill
               }]
 
               res
@@ -159,31 +159,31 @@ var searchadvanced= function(req,res){
 
               var stats = [{
                 "name" : "Governing",
-                "count" : gover
+                "y" : gover
               },
               {
                 "name" : "Operations",
-                "count" : oper
+                "y" : oper
               },
               {
                 "name" : "Marketing",
-                "count" : market
+                "y" : market
               },
               {
                 "name" : "Human Resources",
-                "count" : human
+                "y" : human
               },
               {
                 "name" : "Technology",
-                "count" : tech
+                "y" : tech
               },
               {
                 "name" : "Programs/Outreach",
-                "count" : prog
+                "y" : prog
               },
               {
                 "name" : "Global Homes",
-                "count" : globalSkill
+                "y" : globalSkill
               }]
 
               res
@@ -235,31 +235,31 @@ var searchhome = function(req,res){
 
               var stats = [{
                 "name" : "Governing",
-                "count" : gover
+                "y" : gover
               },
               {
                 "name" : "Operations",
-                "count" : oper
+                "y" : oper
               },
               {
                 "name" : "Marketing",
-                "count" : market
+                "y" : market
               },
               {
                 "name" : "Human Resources",
-                "count" : human
+                "y" : human
               },
               {
                 "name" : "Technology",
-                "count" : tech
+                "y" : tech
               },
               {
                 "name" : "Programs/Outreach",
-                "count" : prog
+                "y" : prog
               },
               {
                 "name" : "Global Homes",
-                "count" : globalSkill
+                "y" : globalSkill
               }]
 
               res

@@ -26,42 +26,85 @@
     </div>
     <md-progress-linear class="md-warn" ng-show="progress_bar_flag" md-mode="indeterminate"></md-progress-linear>
   </md-toolbar>
-  <md-content flex layout-padding class="search-content">
-    <md-card class="volunteer-list-div" >
-      <md-card ng-repeat="volunteer in volunteers_list" class="volunteer-card">
-        <span>
-            <md-card-title>
-              <md-card-title-media class="volunteer-profile-pic showPointer" ng-click="showProfile($event, volunteer)">
-                <div class="md-media-sm card-media" layout>
-                  <md-icon md-svg-icon="/images/user.svg" style="color:grey"></md-icon>
-                </div>
-              </md-card-title-media>
-              <md-card-title-text>
-                <span ng-click="showProfile($event, volunteer)" class="volunteer-name showPointer" >{{volunteer.Name}}</span>
-                <span>
-                  <span class="md-subhead description volunteer-address ">{{volunteer.City}}, {{volunteer.State}}, {{volunteer.Country}}</span>
-                  <span class="md-subhead description volunteer-address"><span class="divider">|</span>{{volunteer['Contact Number']}}</span>
-                </span>
-              </md-card-title-text>
-              <md-card-title-media class="volunteer-actions">
-                <!-- <md-button class="md-fab md-mini md-warn md-color-grey" aria-label="Use Android">
-                  <md-tooltip md-direction="bottom">Show detail</md-tooltip>
-                  <md-icon md-svg-src="/images/information.svg" style="color: greenyellow;"></md-icon>
-                </md-button> -->
-                <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="showMailTemplateC($event)">
+  <md-content flex layout-padding >
+    <div class="search-content">
+      <div class="volunteer-block">
+        <!-- <div>
+          <md-toolbar class="md-primary">
+            <div class="md-toolbar-tools">
+              Volunteer
+            </div>
+          </md-toolbar>
+        </div> -->
+        <md-card class="volunteer-list-div" >
+          <md-card ng-repeat="volunteer in volunteers_list" class="volunteer-card">
+            <span>
+                <md-card-title>
+                  <md-card-title-media class="volunteer-profile-pic showPointer" ng-click="showProfile($event, volunteer)">
+                    <div class="md-media-sm card-media" layout>
+                      <md-icon md-svg-icon="/images/user.svg" style="color:grey"></md-icon>
+                    </div>
+                  </md-card-title-media>
+                  <md-card-title-text>
+                    <span>
+                      <span ng-click="showProfile($event, volunteer)" class="volunteer-name showPointer" >{{volunteer.Name}}</span>
+                      <span class="md-subhead description volunteer-address ">{{volunteer.City}}, {{volunteer.State}}, {{volunteer.Country}}</span>
+                    </span>
+                    <span>
+                      <span ng-repeat="skill in volunteer.all_skills" class="md-subhead description volunteer-address ">{{skill}}, </span>
+                      <span class="md-subhead description volunteer-address"><span class="divider">|</span>{{volunteer['Contact Number']}}</span>
+                    </span>
+                  </md-card-title-text>
+                  <md-card-title-media class="volunteer-actions">
+                    <!-- <md-button class="md-fab md-mini md-warn md-color-grey" aria-label="Use Android">
+                      <md-tooltip md-direction="bottom">Show detail</md-tooltip>
+                      <md-icon md-svg-src="/images/information.svg" style="color: greenyellow;"></md-icon>
+                    </md-button> -->
+                    <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="showTextTemplate($event, volunteer)">
+                      <md-tooltip md-direction="bottom">Send text message</md-tooltip>
+                      <md-icon md-svg-src="/images/chat.svg" style="color: greenyellow;"></md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="showMailTemplateC($event, volunteer)">
+                      <md-tooltip md-direction="bottom">Send email</md-tooltip>
+                      <md-icon md-svg-src="/images/close-envelope.svg" style="color: greenyellow;"></md-icon>
+                    </md-button>
+                  </md-card-title-media>
+                  <!-- <md-card-title-text>
 
-                  <md-tooltip md-direction="bottom">Send email</md-tooltip>
-                  <md-icon md-svg-src="/images/paper-plane-l.svg" style="color: greenyellow;"></md-icon>
-                </md-button>
-              </md-card-title-media>
-              <!-- <md-card-title-text>
+                  </md-card-title-text> -->
+                </md-card-title>
+              <!-- </md-checkbox> -->
+            </span>
+          </md-card>
+        </md-card>
+      </div>
+      <div class="tools-block">
+        <md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}"
+                         ng-class="selectedMode">
+        <md-fab-trigger>
+          <md-button aria-label="menu" class="md-fab md-warn">
+            <md-tooltip md-direction="bottom">Send to all</md-tooltip>
+            <md-icon md-svg-src="images/paper-plane-l.svg"></md-icon>
+          </md-button>
+        </md-fab-trigger>
 
-              </md-card-title-text> -->
-            </md-card-title>
-          <!-- </md-checkbox> -->
-        </span>
-      </md-card>
-  </md-card>
+        <md-fab-actions>
+          <md-button ng-click="showTextTemplate($event, 'bulk')" aria-label="Twitter" class="md-fab md-raised md-mini">
+            <md-tooltip md-direction="right" >Send text message to all</md-tooltip>
+            <md-icon md-svg-src="images/chat.svg" aria-label="Twitter"></md-icon>
+          </md-button>
+          <md-button aria-label="Facebook" class="md-fab md-raised md-mini" ng-click="showMailTemplateC($event, 'bulk')">
+            <md-tooltip md-direction="right" >Send email to all</md-tooltip>
+            <md-icon md-svg-src="images/close-envelope.svg" aria-label="Facebook"></md-icon>
+          </md-button>
+        </md-fab-actions>
+      </md-fab-speed-dial>
+      </div>
+      <div class="graph-block">
+        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        <!-- <hc-pie-chart style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto" title="Browser usage" data="pieData">Placeholder for pie chart</hc-pie-chart> -->
+      </div>
+    </div>
   </md-content>
 </div>
 <!-- ng-disabled="search_isDisabled"

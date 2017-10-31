@@ -1,8 +1,8 @@
-<md-dialog aria-label="Mango (Fruit)" class="wdth70">
+<md-dialog aria-label="Mango (Fruit)" class="">
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>Send Email</h2>
+        <h2>Send Text Message</h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="cancel()">
           <md-icon md-svg-src="/images/cancel.svg" aria-label="Close dialog"></md-icon>
@@ -14,19 +14,14 @@
       <div class="md-dialog-content">
           <div class="mail-to-address">
             <label>To:</label>
-            <md-chips ng-model="mail_recipient_list" readonly="false" md-removable="true"
+            <md-chips ng-model="text_recipient_list" readonly="false" md-removable="true"
               md-enable-chip-edit="true">To:</md-chips>
           </div>
-          <div class="mail-subject">
-            <md-input-container class="md-block">
-              <label>Subject</label>
-              <input ng-model="mail_subject">
-            </md-input-container>
-          </div>
+
           <div class="mail-content">
             <md-input-container class="md-block">
               <label>Content</label>
-              <textarea ng-model="mail_content" md-maxlength="350" rows="10" md-select-on-focus></textarea>
+              <textarea ng-model="text_content" md-maxlength="350" rows="10" md-select-on-focus></textarea>
             </md-input-container>
           </div>
       </div>
