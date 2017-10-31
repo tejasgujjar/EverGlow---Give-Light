@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngRoute', 'ngMaterial','madvas.angular-globe']);
+var myApp = angular.module('myApp',['ngRoute', 'ngMaterial','madvas.angular-globe', 'ngtweet']);
 
 myApp.config(function($routeProvider) {
    $routeProvider
