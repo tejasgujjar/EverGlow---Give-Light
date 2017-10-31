@@ -25,6 +25,7 @@
     "morgan": "~1.7.0",
     "mysql": "^2.11.1",
     "mysql-insert-multiple": "^1.0.3",
+    "ngtweet": "^0.6.2",
     "node-geocoder": "^3.21.0",
     "nodemailer": "^4.3.1",
     "nodemon": "^1.12.1",
