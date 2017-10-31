@@ -232,7 +232,7 @@ $scope.get_default_search_results = function(){
     };
 
     $scope.answer = function(answer) {
-      console.log(myscope.location1);
+      console.log(myscope.location);
       console.log("Tets"+$scope.location1);
       $mdDialog.hide(answer);
     };
