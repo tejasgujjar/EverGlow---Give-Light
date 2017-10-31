@@ -1,6 +1,6 @@
 const client = require('twilio')(
   "AC03a785ec44ed0d0c406b95919395d70d",
-  "378edf6ae33810f9b51aaf14312d88ae"
+  "auth token"
 );
 
 var send_sms = function(req,res){
