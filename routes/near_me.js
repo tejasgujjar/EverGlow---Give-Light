@@ -17,7 +17,18 @@ var options = {
 
 
 
-var geocoder = NodeGeocoder(options);
+var testnear = function(req,res){
+  var geocoder = NodeGeocoder(options);
+  geocoder.geocode('San Jose', function(err, res) {
+  console.log(res);
+});
+
+res
+              .status(200)
+              .json({"field_details":""});
+
+
+}
 
 
 var nearme = function(req,res){
@@ -38,26 +49,27 @@ var city_users = db.collection("user_db").find({
             	console.log(err);
             	return;
             	}
-              
+
     var name_city = {};
 
     for(var i = 0; i<results.length; i++){
         //console.log(results[i].Name);
         name_city[results[i].Name] = results[i].City;
-        
-        
+
+
     }
 
 name_lat_long = {};
 
 for(var city in name_city){
-console.log(name_city[city]);
+//console.log(name_city[city]);
     if(name_city[city] == ""){
         continue;
     }
-     geocoder.geocode(name_city[city], function(err, results) {
-                
-                if(typeof results == 'undefined'){
+
+     geocoder.geocode("San Jose", function(err, results) {
+              console.log(results);
+              if(typeof results == 'undefined'){
 
                   console.log("++++++++++++++++++");
               }else{
@@ -66,10 +78,10 @@ console.log(name_city[city]);
                 //sconsole.log(results[0].longitude);
                 loc = {"latitude":results[0].latitude,"longitude":results[0].longitude};
                 console.log(loc)
-                
+
               }
             });
-            
+
 }
 
 // console.log(name_lat_long);
@@ -106,5 +118,5 @@ for(var i = 0; i<results.length; i++){
 
 });
 }
-
+exports.testnear = testnear;
 exports.nearme = nearme;

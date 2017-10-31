@@ -58,6 +58,7 @@ app.get('/searchone',vol.searchone);
 app.get('/searchhome',vol.searchhome);
 
 app.get('/nearme',near_me.nearme);
+app.get('/testnearme',near_me.testnear);
 
 app.get('/field_details',field_search.field_details);
 
