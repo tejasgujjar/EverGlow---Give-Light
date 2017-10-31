@@ -46,9 +46,12 @@
                     </div>
                   </md-card-title-media>
                   <md-card-title-text>
-                    <span ng-click="showProfile($event, volunteer)" class="volunteer-name showPointer" >{{volunteer.Name}}</span>
                     <span>
+                      <span ng-click="showProfile($event, volunteer)" class="volunteer-name showPointer" >{{volunteer.Name}}</span>
                       <span class="md-subhead description volunteer-address ">{{volunteer.City}}, {{volunteer.State}}, {{volunteer.Country}}</span>
+                    </span>
+                    <span>
+                      <span ng-repeat="skill in volunteer.all_skills" class="md-subhead description volunteer-address ">{{skill}}, </span>
                       <span class="md-subhead description volunteer-address"><span class="divider">|</span>{{volunteer['Contact Number']}}</span>
                     </span>
                   </md-card-title-text>
@@ -57,10 +60,13 @@
                       <md-tooltip md-direction="bottom">Show detail</md-tooltip>
                       <md-icon md-svg-src="/images/information.svg" style="color: greenyellow;"></md-icon>
                     </md-button> -->
-                    <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="showMailTemplateC($event)">
-
+                    <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="showTextTemplate($event, volunteer)">
+                      <md-tooltip md-direction="bottom">Send text message</md-tooltip>
+                      <md-icon md-svg-src="/images/chat.svg" style="color: greenyellow;"></md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="showMailTemplateC($event, volunteer)">
                       <md-tooltip md-direction="bottom">Send email</md-tooltip>
-                      <md-icon md-svg-src="/images/paper-plane-l.svg" style="color: greenyellow;"></md-icon>
+                      <md-icon md-svg-src="/images/close-envelope.svg" style="color: greenyellow;"></md-icon>
                     </md-button>
                   </md-card-title-media>
                   <!-- <md-card-title-text>
@@ -73,45 +79,22 @@
         </md-card>
       </div>
       <div class="tools-block">
-        <!-- <md-fab-speed-dial ng-hide="demo.hidden" md-direction="left" md-open="demo.isOpen"
-                     class="md-scale" ng-class="{ 'md-hover-full': demo.hover }"
-                     ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false">
-          <md-fab-trigger>
-            <md-button aria-label="menu" class="md-fab md-warn">
-              <md-tooltip md-direction="top" md-visible="tooltipVisible">Menu</md-tooltip>
-              <md-icon md-svg-src="images/paper-plane-l.svg" aria-label="menu"></md-icon>
-            </md-button>
-          </md-fab-trigger>
-
-          <md-fab-actions>
-            <div ng-repeat="item in demo.items">
-              <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini"
-                         ng-click="demo.openDialog($event, item)">
-                <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
-                            md-autohide="false">
-                  {{item.name}}
-                </md-tooltip>
-
-                <md-icon md-svg-src="{{item.icon}}" aria-label="{{item.name}}"></md-icon>
-              </md-button>
-            </div>
-          </md-fab-actions>
-        </md-fab-speed-dial> -->
         <md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}"
                          ng-class="selectedMode">
         <md-fab-trigger>
           <md-button aria-label="menu" class="md-fab md-warn">
+            <md-tooltip md-direction="bottom">Send to all</md-tooltip>
             <md-icon md-svg-src="images/paper-plane-l.svg"></md-icon>
           </md-button>
         </md-fab-trigger>
 
         <md-fab-actions>
-          <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
-            <md-tooltip md-direction="right" >Send text message</md-tooltip>
+          <md-button ng-click="showTextTemplate($event, 'bulk')" aria-label="Twitter" class="md-fab md-raised md-mini">
+            <md-tooltip md-direction="right" >Send text message to all</md-tooltip>
             <md-icon md-svg-src="images/chat.svg" aria-label="Twitter"></md-icon>
           </md-button>
-          <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
-            <md-tooltip md-direction="right" >Send email</md-tooltip>
+          <md-button aria-label="Facebook" class="md-fab md-raised md-mini" ng-click="showMailTemplateC($event, 'bulk')">
+            <md-tooltip md-direction="right" >Send email to all</md-tooltip>
             <md-icon md-svg-src="images/close-envelope.svg" aria-label="Facebook"></md-icon>
           </md-button>
         </md-fab-actions>
