@@ -12,26 +12,16 @@
 
     <md-dialog-content>
       <div class="md-dialog-content">
-
+          Add profile content here
       <md-input-container>
         <label>Location</label>
-        <input ng-model="location1" type="text">
+        <input ng-model="location1" type="email">
       </md-input-container>
-      <br>
-      <md-input-container>
-        <label>Skills</label>
-        <input ng-model="skills" type="text">
-      </md-input-container>
-      <br>
-      <md-input-container>
-        <label>Event</label>
-        <input ng-model="event" type="text">
-      </md-input-container>
-      </div>
 
+      </div>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button class="md-raised md-primary" ng-click="answer('test')">
+      <md-button class="md-raised md-primary" ng-click="answer(location)">
        Submit
       </md-button>
       <md-button class="md-warn" ng-click="answer('useful')">

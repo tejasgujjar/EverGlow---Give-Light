@@ -236,3 +236,6 @@ md-tooltip{
 .wdth70{
   width: 70em !important;
 }
+.showPointer{
+  cursor: pointer !important;
+}

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngRoute', 'ngMaterial','madvas.angular-globe']);
+var myApp = angular.module('myApp',['ngRoute', 'ngMaterial','madvas.angular-globe', 'ngtweet']);
 
 myApp.config(function($routeProvider) {
    $routeProvider
@@ -181,7 +181,7 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
   $scope.volunteers_list = [];
   var testdata = [{"_id":"59f57a8d8a207563dd30dc3c","Name":"Elaf","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""},{"_id":"89f57a8d8a207563dd30dc3c","Name":"Tejas","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""}];
 
-
+  $scope.progress_bar_flag = false;
   $scope.get_search_results = function(search_str){
     $http({
 		      method: 'GET',
@@ -192,8 +192,10 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
             var singleobj = data.test[0]
 			   		console.log(data);
             $scope.volunteers_list = success.data.test;
+            $scope.progress_bar_flag = false;
 			   },function (error){
 			   		console.log("Failure");
+            $scope.progress_bar_flag = false;
 				});
   }
 
@@ -208,12 +210,19 @@ $scope.get_default_search_results = function(){
           console.log(JSON.stringify(singleobj));
           console.log(success.data);
           $scope.volunteers_list = success.data.test;
+          $scope.progress_bar_flag = false;
        },function (error){
           console.log("Failure");
+          $scope.progress_bar_flag = false;
       });
 }
 
   function FilterDialogController($scope, $mdDialog) {
+    //var vm = $scope;
+    //vm.location1 = "ashadjkj";
+    this.parent = $scope;
+    var myscope  = $scope;
+    $scope.location1 = "oiuyt";
     $scope.hide = function() {
       $mdDialog.hide();
     };
@@ -223,6 +232,8 @@ $scope.get_default_search_results = function(){
     };
 
     $scope.answer = function(answer) {
+      console.log(myscope.location1);
+      console.log("Tets"+$scope.location1);
       $mdDialog.hide(answer);
     };
   }
@@ -247,10 +258,50 @@ $scope.get_default_search_results = function(){
     };
   }
 
+  function ProfileDialogController($scope, $mdDialog, volunteerDetail){
+    var volunteer = volunteerDetail;
+    console.log("Profile controller: "+volunteer.Name);
+
+
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
+
   $scope.entered_search = function(){
     console.log("searched val: "+$scope.search_val);
+    $scope.progress_bar_flag = true;
     $scope.get_search_results($scope.search_val);
   }
+  $scope.showProfile = function(ev, volunteer){
+      console.log('show profile pic');
+      console.log("Show advanced filter dialog");
+      $mdDialog.show({
+        controller: ProfileDialogController,
+        templateUrl: 'views/profile-dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        locals:{
+          volunteerDetail: volunteer
+        },
+        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+      })
+      .then(function(answer) {
+        $scope.status = 'You said the information was "' + answer + '".';
+      }, function() {
+        $scope.status = 'You cancelled the dialog.';
+      });
+  }
+
   $scope.showAdvanced = function(ev) {
     console.log("Show advanced filter dialog");
     $mdDialog.show({
