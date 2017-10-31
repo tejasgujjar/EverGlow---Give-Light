@@ -50,6 +50,20 @@ a {
   /*background-image: url('images/header-bg.png');*/
   /*background-size: cover;
   background-position: center;*/
+  height: 30em;
+  width: 100%;
+  min-width: 100%;
+
+}
+.profileImage {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.profileLayout {
+  height: auto;
+  width: auto;
 }
 .md-navbar-tools {
     font-size: 20px;

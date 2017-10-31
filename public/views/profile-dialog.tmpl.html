@@ -1,8 +1,8 @@
-<md-dialog aria-label="Mango (Fruit)">
+<md-dialog class="profileLayout">
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>Advanced search</h2>
+        <h2>Profile Details</h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="cancel()">
           <md-icon md-svg-src="/images/cancel.svg" aria-label="Close dialog"></md-icon>
@@ -10,23 +10,29 @@
       </div>
     </md-toolbar>
 
-    <md-dialog-content>
-      <div class="md-dialog-content">
-          Add profile content here
-      <md-input-container>
-        <label>Location</label>
-        <input ng-model="location1" type="email">
-      </md-input-container>
-
+    <form name="userForm">
+      <img class="profileImage" style="float:center;" src="images/profilePic.png">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Name</label>
+          <input ng-model="user.firstName">
+        </md-input-container>
       </div>
-    <md-dialog-actions layout="row">
-      <span flex></span>
-      <md-button class="md-raised md-primary" ng-click="answer(location)">
-       Submit
-      </md-button>
-      <md-button class="md-warn" ng-click="answer('useful')">
-        Cancel
-      </md-button>
-    </md-dialog-actions>
-  </form>
+      <md-input-container class="md-block">
+        <label>Address</label>
+        <input ng-model="user.address">
+      </md-input-container>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Phone Number</label>
+          <input ng-model="user.city">
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Interests</label>
+          <input ng-model="user.city">
+        </md-input-container>
+      </div>
+    </form>
 </md-dialog>
