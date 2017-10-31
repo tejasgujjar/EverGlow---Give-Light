@@ -16,9 +16,6 @@ a {
     background: white;
     /*background-image: url('/images/volunteer.jpg');*/
 }
-.tweet {
-    position:inline;
-}
 .cards {
   /*display: flex;*/
 }
@@ -128,6 +125,13 @@ height: auto;
   position: initial;
   bottom: 100px;
   padding-top: 50px;
+}
+.globe {
+    position: absolute;
+    top: 50%;
+}
+.tweet {
+    padding-top: 5%;
 }
 footer {
   position: realtive;
