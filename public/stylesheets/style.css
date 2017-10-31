@@ -6,10 +6,45 @@ body {
 a {
   color: #00B7FF;
 }
+.mainNavbar {
+    color: white;
+    font-size: 15px;
+}
+.card {
+    height: auto;
+    width: 100%;
+    background: white;
+    /*background-image: url('/images/volunteer.jpg');*/
+}
+.tweet {
+    position:inline;
+}
+.cards {
+  /*display: flex;*/
+}
+.tweetCard {
+  background: #9eabab;
+}
+.globeHeader {
+    color: black;
+    font-style: italic;
+}
+.globeFooter {
+    color: black;
+}
+.tweetHeader {
+  color: black;
+}
+.tweetContent {
+  height: auto;
+}
 .top-right {
     position: absolute;
     top: 8px;
     right: 16px;
+}
+.globeBody {
+      /*text-align: center;*/
 }
 
 .master-video-wrapper {
@@ -18,6 +53,28 @@ a {
   /*background-image: url('images/header-bg.png');*/
   /*background-size: cover;
   background-position: center;*/
+}
+.md-navbar-tools {
+    font-size: 20px;
+    letter-spacing: .005em;
+    box-sizing: border-box;
+    font-weight: 400;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    width: 100%;
+    height: 64px;
+    max-height: 64px;
+    padding: 0 16px;
+    margin: 0;
+    background: black;
 }
 .master-video{
 width: 100%;
@@ -68,7 +125,7 @@ height: auto;
   background-color: white;
 }
 .bottom-left {
-  position: relative;
+  position: initial;
   bottom: 100px;
   padding-top: 50px;
 }

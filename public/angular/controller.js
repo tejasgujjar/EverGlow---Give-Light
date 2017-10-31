@@ -33,11 +33,50 @@ console.log("Loading main page");
 //   })
 
 
-myApp.controller('HomeController',['$scope','$http','$location',function($scope,$http,$location){
+myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',function($scope,$http,$location,$mdDialog){
   $scope.go = function ( path ) {
     $location.path( path );
   };
 
+  //starts
+  $scope.showAdvanced = function() {
+    $mdDialog.show({
+      controller: 'HomeController',
+      templateUrl: 'views/about.html',
+      clickOutsideToClose:true,
+    })
+  };
+  $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+  $scope.showContact = function() {
+      $mdDialog.show({
+        controller: 'HomeController',
+        templateUrl: 'views/contactus.html',
+        clickOutsideToClose:true,
+      })
+    };
+    $scope.showDyk = function() {
+        $mdDialog.show({
+          controller: 'HomeController',
+          templateUrl: 'views/didYouKnow.html',
+          clickOutsideToClose:true,
+        })
+      };
+      $scope.showform = function() {
+          $mdDialog.show({
+            controller: 'HomeController',
+            templateUrl: 'views/mainForm.html',
+            clickOutsideToClose:true,
+          })
+        };
+    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+    'WY').split(' ').map(function(state) {
+        return {abbrev: state};
+      });
+
+  //ends
 
 
 
