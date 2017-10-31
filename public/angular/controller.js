@@ -176,7 +176,7 @@ AdvancedCtrl();
 
 }]);
 
-myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDialog',function($scope,$http,$q, $timeout,$mdDialog){
+myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDialog','$mdToast',function($scope,$http,$q, $timeout,$mdDialog,$mdToast){
   console.log("search controller");
   $scope.volunteers_list = [];
   var testdata = [{"_id":"59f57a8d8a207563dd30dc3c","Name":"Elaf","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""},{"_id":"89f57a8d8a207563dd30dc3c","Name":"Tejas","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""}];
@@ -193,9 +193,12 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
 			   		console.log(data);
             $scope.volunteers_list = success.data.test;
             $scope.progress_bar_flag = false;
+            $scope.isOpen = false;
+            refresh_chart(success.data.stats);
 			   },function (error){
 			   		console.log("Failure");
             $scope.progress_bar_flag = false;
+            refresh_chart([]);
 				});
   }
 
@@ -211,18 +214,32 @@ $scope.get_default_search_results = function(){
           console.log(success.data);
           $scope.volunteers_list = success.data.test;
           $scope.progress_bar_flag = false;
+          $scope.isOpen = false;
+          console.log(JSON.stringify(success.data.stats));
+          // refresh_chart(success.data.stats);
        },function (error){
           console.log("Failure");
           $scope.progress_bar_flag = false;
+          $scope.isOpen = false;
+          refresh_chart([]);
       });
 }
-
+  $superScope = $scope;
   function FilterDialogController($scope, $mdDialog) {
     //var vm = $scope;
     //vm.location1 = "ashadjkj";
+    $scope.gover = false;
+    $scope.oper = false;
+    $scope.market = false;
+    $scope.human = false;
+    $scope.tech = false;
+    $scope.prog = false;
+    $scope.global =false;
+    $scope.city = "";
+
     this.parent = $scope;
     var myscope  = $scope;
-    $scope.location1 = "oiuyt";
+
     $scope.hide = function() {
       $mdDialog.hide();
     };
@@ -232,15 +249,48 @@ $scope.get_default_search_results = function(){
     };
 
     $scope.answer = function(answer) {
-      console.log(myscope.location1);
-      console.log("Tets"+$scope.location1);
+
+      console.log("Tets"+$scope.city);
+      console.log("Tets"+$scope.gover);
+      console.log("Tets"+$scope.oper);
+      console.log("Tets"+$scope.market);
+      console.log("Tets"+$scope.human);
+      console.log("Tets"+$scope.tech);
+      console.log("Tets"+$scope.prog);
+      console.log("Tets"+$scope.global);
+
+      searchobj = {
+        "city" : $scope.city == "" ? "" : $scope.city,
+        "gover" : $scope.gover == "" ? "" : $scope.gover,
+        "oper" : $scope.oper == "" ? "" : $scope.oper,
+        "market" : $scope.market == "" ? "" : $scope.market,
+        "human" : $scope.human == "" ? "" : $scope.human,
+        "tech" : $scope.tech == "" ? "" : $scope.tech,
+        "prog" : $scope.prog == "" ? "" : $scope.prog,
+          "global" : $scope.global == "" ? "" : $scope.global
+      }
+
+
+      $http({
+            method: 'GET',
+            url: '/searchadvanced',
+            params : searchobj
+           }).then(function (success){
+              console.log("Success");
+              console.log(success.data);
+              $superScope.volunteers_list = success.data.test;
+
+           },function (error){
+              console.log("Failure");
+          });
+
       $mdDialog.hide(answer);
     };
   }
 
-  function MailDialogController($scope, $mdDialog) {
+  function MailDialogController($scope, $mdDialog, emailList) {
     //$scope.mail_recipient_list = ['tejasgujjar@gmail.com', 'tgusjjar','tejasgujjar@gmail.codm', 'tgujjar','tejadsgujjar@gmail.com', 'tguddjjar','tejasgujddjar@gmail.com', 'tgujddjar','tejasgvvujjar@gmail.com', 'tgujjvar','tejasgujjar@gmail.comv', 'tgujjavvr','tejasgxujjar@gmail.com', 'tguxxjjar'];
-    $scope.mail_recipient_list = ['tejasgujjar@gmail.com', 'tgusjjar','tejasgujjar@gmail.codm'];
+    $scope.mail_recipient_list = emailList;
     $scope.mail_subject = "GiveLight Foundation event reminder";
     var signature = "\n\nThanks and Regards, \nGiveLight Foundation"
     $scope.mail_content = "Dear Volunteer, \n\nWe are organizing a fundraiser event near your place." + signature;
@@ -255,13 +305,33 @@ $scope.get_default_search_results = function(){
 
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
+      send_mail($scope.mail_recipient_list, $scope.mail_subject, $scope.mail_content);
+    };
+  }
+  function TextDialogController($scope, $mdDialog, numberList) {
+    //$scope.mail_recipient_list = ['tejasgujjar@gmail.com', 'tgusjjar','tejasgujjar@gmail.codm', 'tgujjar','tejadsgujjar@gmail.com', 'tguddjjar','tejasgujddjar@gmail.com', 'tgujddjar','tejasgvvujjar@gmail.com', 'tgujjvar','tejasgujjar@gmail.comv', 'tgujjavvr','tejasgxujjar@gmail.com', 'tguxxjjar'];
+    $scope.text_recipient_list = numberList;
+    // $scope.mail_subject = "GiveLight Foundation event reminder";
+    var signature = "\n\nThanks and Regards, \nGiveLight Foundation"
+    $scope.text_content = "Dear Volunteer, \n\nWe are organizing a fundraiser event near your place." + signature;
+
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+      send_sms($scope.text_recipient_list, $scope.mail_content);
     };
   }
 
   function ProfileDialogController($scope, $mdDialog, volunteerDetail){
     var volunteer = volunteerDetail;
     console.log("Profile controller: "+volunteer.Name);
-
 
     $scope.hide = function() {
       $mdDialog.hide();
@@ -318,14 +388,79 @@ $scope.get_default_search_results = function(){
       $scope.status = 'You cancelled the dialog.';
     });
   };
-  $scope.showMailTemplateC = function(ev) {
+  function get_all_emails(vol_list){
+      var length = vol_list.length;
+      var emails = [];
+      for(var i=0;i < length; i++){
+          if(vol_list[i]["Email Address"] != ""){
+            emails.push(vol_list[i]["Email Address"]);
+          }
+      }
+      // remove duplicates
+      var unique_emails = emails.filter(function(elem, index, self) {
+          return index == self.indexOf(elem);
+      })
+      return unique_emails;
+  }
+  $scope.showMailTemplateC = function(ev, volunteer) {
     console.log("Show mail template dialog");
+    var emails = [];
+    if(volunteer == 'bulk'){
+      console.log("Send bulk messages");
+      emails = get_all_emails($scope.volunteers_list);
+    }else{
+      emails = [volunteer["Email Address"]]
+    }
     $mdDialog.show({
       controller: MailDialogController,
       templateUrl: 'views/mail-dialog.tmpl.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
+      locals:{
+        emailList: emails
+      },
+      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+  };
+
+  function get_all_numbers(vol_list){
+      var length = vol_list.length;
+      var emails = [];
+      for(var i=0;i < length; i++){
+          if(vol_list[i]["Contact Number"] != ""){
+            emails.push(vol_list[i]["Contact Number"]);
+          }
+      }
+      // remove duplicates
+      var unique_emails = emails.filter(function(elem, index, self) {
+          return index == self.indexOf(elem);
+      })
+      return unique_emails;
+  }
+  $scope.showTextTemplate = function(ev, volunteer) {
+    console.log("Show mail template dialog");
+    var numbers = [];
+    if(volunteer == 'bulk'){
+      console.log("Send bulk text messages");
+      numbers = get_all_numbers($scope.volunteers_list);
+    }else{
+      numbers = [volunteer["Contact Number"]]
+    }
+    $mdDialog.show({
+      controller: TextDialogController,
+      templateUrl: 'views/sms-dialog.tmpl.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals:{
+        numberList: numbers
+      },
       fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
     })
     .then(function(answer) {
@@ -337,6 +472,136 @@ $scope.get_default_search_results = function(){
   function load_static_test_data(){
     $scope.volunteers_list = testdata;
   }
-  //$scope.get_default_search_results();
-  load_static_test_data();
+  $scope.get_default_search_results();
+  //load_static_test_data();
+  $scope.topDirections = ['left', 'up'];
+   $scope.bottomDirections = ['down', 'right'];
+
+   $scope.isOpen = false;
+
+   $scope.availableModes = ['md-fling', 'md-scale'];
+   $scope.selectedMode = 'md-fling';
+
+   $scope.availableDirections = ['up', 'down', 'left', 'right'];
+  $scope.selectedDirection = 'up';
+
+  var chartOptions = {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: "Volunteer's Interests"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Volunteers',
+        colorByPoint: true,
+        data: [{"name":"Governing","y":89},{"name":"Operations","y":76},{"name":"Marketing","y":23},{"name":"Human Resources","y":41},{"name":"Technology","y":36},{"name":"Programs/Outreach","y":22},{"name":"Global Homes","y":31}]
+    }]
+  };
+  var volunteerChart = Highcharts.chart('container', chartOptions);
+  function refresh_chart(data){
+    volunteerChart.series[0].setData(data);
+  }
+
+  function send_mail(to, subject, content){
+      var email_data = {
+        "emaildata":{
+          "mailids":to,
+          "subject":subject,
+          "body":content
+        }
+      }
+      $scope.showSimpleToast('Sending email ...');
+      console.log("sending mail: "+email_data);
+      $http({
+  		      method: 'POST',
+  		      url: '/send_mail',
+            data: email_data,
+  			   }).then(function (success){
+  			   		console.log("Success from email");
+              var data = success.data;
+  			   		console.log(data);
+              $scope.showSimpleToast('Email sent successfully!');
+  			   },function (error){
+  			   		console.log("Failure");
+              $scope.showSimpleToast('Error in sending emails!');
+  			});
+    }
+    function send_sms(to, content){
+      var sms_data = {
+        "to":{
+          "phone":to,
+          "body":content
+        }
+      }
+      $scope.showSimpleToast('Sending text message ...');
+      console.log("sending sms: "+sms_data);
+      return ;
+      $http({
+  		      method: 'POST',
+  		      url: '/send_mail',
+            data: sms_data,
+  			   }).then(function (success){
+  			   		console.log("Success from sms");
+              var data = success.data;
+  			   		console.log(data);
+              $scope.showSimpleToast('Text message sent successfully!');
+  			   },function (error){
+  			   		console.log("Failure");
+              $scope.showSimpleToast('Error in sending text message!');
+  			});
+    }
+      var last = {
+          bottom: true,
+          top: false,
+          left: false,
+          right: true
+        };
+
+  $scope.toastPosition = angular.extend({},last);
+
+  $scope.getToastPosition = function() {
+    sanitizePosition();
+
+    return Object.keys($scope.toastPosition)
+      .filter(function(pos) { return $scope.toastPosition[pos]; })
+      .join(' ');
+  };
+
+  function sanitizePosition() {
+    var current = $scope.toastPosition;
+
+    if ( current.bottom && last.top ) current.top = false;
+    if ( current.top && last.bottom ) current.bottom = false;
+    if ( current.right && last.left ) current.left = false;
+    if ( current.left && last.right ) current.right = false;
+
+    last = angular.extend({},current);
+  }
+  $scope.showSimpleToast = function(msg) {
+    var pinTo = $scope.getToastPosition();
+
+    $mdToast.show(
+      $mdToast.simple()
+        .textContent(msg)
+        .position(pinTo )
+        .hideDelay(3000)
+    );
+  };
 }]);

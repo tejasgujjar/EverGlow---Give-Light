@@ -185,7 +185,10 @@ md-tooltip{
   min-height: 30em;
 }
 .search-content{
-  margin: 0px 6%;
+  /*margin: 0px 6%;*/
+  display: flex;
+  float: right;
+  width: 100%;
 }
 .volunteer-profile-pic{
   margin-top: -27px;
@@ -198,6 +201,7 @@ md-tooltip{
 }
 .volunteer-name{
   padding: 1% 0px;
+  font-weight: 600;
 }
 .divider{
   margin: 0 5px;
@@ -232,6 +236,13 @@ md-tooltip{
   padding: 8px;
   font-size: 0.7em;
 }
+.search-input-box input:focus{
+  background-color: white;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 0.7em;
+  border-width: 0px !important;
+}
 .search-input-box{
   margin: 0px
 }
@@ -240,4 +251,17 @@ md-tooltip{
 }
 .showPointer{
   cursor: pointer !important;
+}
+.volunteer-block{
+  width: 65%;
+  margin-left: 10%;
+}
+.graph-block{
+  float: right;
+}
+.md-button.md-customprimary{
+  background-color: rgba(255,255,255,0.87) !important;
+}
+.md-button.md-customprimary:hover{
+  background-color: rgb(64, 82, 181) !important;
 }
