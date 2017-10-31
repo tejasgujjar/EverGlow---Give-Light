@@ -49,8 +49,9 @@ var searchall = function(req,res){
 
 var searchadvanced= function(req,res){
   console.log("Inside searchadvanced");
-  console.log(req.query.searchobj);
-  var obj = JSON.parse(req.query.searchobj);
+  console.log(req.query);
+  //var obj = JSON.parse(req.query);
+  var obj = req.query;
   console.log(obj);
   searchcity = obj.city.toLowerCase();
 
@@ -61,13 +62,13 @@ var searchadvanced= function(req,res){
 
     var searchCity = obj.city.toLowerCase();
     searchCity = searchCity == "" ? "987654321" : searchCity;
-    var searchGoverning =  obj.gover == "" ? "1":obj.gover;
-    var searchOper =  obj.oper== "" ? "1":obj.oper;
-    var searchMarket =  obj.market== "" ? "1":obj.market;
-    var searchHuman =  obj.human== "" ? "1":obj.human;
-    var searchTech =  obj.tech== "" ? "1":obj.tech;
-    var searchProg =  obj.prog== "" ? "1":obj.prog;
-    var searchGlobal =  obj.global== "" ? "1":obj.global;
+    var searchGoverning =  obj.gover == "" ? "1":"Governing";
+    var searchOper =  obj.oper== "" ? "1":"Operations";
+    var searchMarket =  obj.market== "" ? "1":"Marketing";
+    var searchHuman =  obj.human== "" ? "1":"Human Resources";
+    var searchTech =  obj.tech== "" ? "1":"Technology";
+    var searchProg =  obj.prog== "" ? "1":"Programs/Outreach";
+    var searchGlobal =  obj.global== "" ? "1":"Global Homes";
 
     myCollection.find({ $and:[ {$or: [ {all_skills: {$elemMatch: {'$regex': searchGoverning,$options:'i'}}},
                                        {all_skills: {$elemMatch: {'$regex': searchOper,$options:'i'}}},

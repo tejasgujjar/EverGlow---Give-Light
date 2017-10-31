@@ -216,7 +216,7 @@ $scope.get_default_search_results = function(){
           $scope.progress_bar_flag = false;
       });
 }
-
+  $superScope = $scope;
   function FilterDialogController($scope, $mdDialog) {
     //var vm = $scope;
     //vm.location1 = "ashadjkj";
@@ -227,6 +227,7 @@ $scope.get_default_search_results = function(){
     $scope.tech = false;
     $scope.prog = false;
     $scope.global =false;
+    $scope.city = "";
 
     this.parent = $scope;
     var myscope  = $scope;
@@ -240,8 +241,41 @@ $scope.get_default_search_results = function(){
     };
 
     $scope.answer = function(answer) {
-      console.log(myscope.location);
-      console.log("Tets"+$scope.location1);
+
+      console.log("Tets"+$scope.city);
+      console.log("Tets"+$scope.gover);
+      console.log("Tets"+$scope.oper);
+      console.log("Tets"+$scope.market);
+      console.log("Tets"+$scope.human);
+      console.log("Tets"+$scope.tech);
+      console.log("Tets"+$scope.prog);
+      console.log("Tets"+$scope.global);
+
+      searchobj = {
+        "city" : $scope.city == "" ? "" : $scope.city,
+        "gover" : $scope.gover == "" ? "" : $scope.gover,
+        "oper" : $scope.oper == "" ? "" : $scope.oper,
+        "market" : $scope.market == "" ? "" : $scope.market,
+        "human" : $scope.human == "" ? "" : $scope.human,
+        "tech" : $scope.tech == "" ? "" : $scope.tech,
+        "prog" : $scope.prog == "" ? "" : $scope.prog,
+          "global" : $scope.global == "" ? "" : $scope.global
+      }
+
+
+      $http({
+            method: 'GET',
+            url: '/searchadvanced',
+            params : searchobj
+           }).then(function (success){
+              console.log("Success");
+              console.log(success.data);
+              $superScope.volunteers_list = success.data.test;
+
+           },function (error){
+              console.log("Failure");
+          });
+
       $mdDialog.hide(answer);
     };
   }
