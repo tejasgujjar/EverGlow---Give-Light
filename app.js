@@ -61,6 +61,7 @@ app.get('/mongo_check',upcomingevents.checkstatus);
 app.get('/get_future_events',upcomingevents.get_future_events);
 app.get('/get_past_events',upcomingevents.get_past_events);
 app.get('/event_volunteer',event_volunteer.get_event_skills_match);
+app.get('/event_walk',event_volunteer.get_event_location_match);
 app.post('/locationdetails',locationdetails.locationquery);
 app.get('/getlocationdetails',locationdetails.getlocationquery);
 
