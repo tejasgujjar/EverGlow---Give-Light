@@ -10,11 +10,34 @@ a {
     color: white;
     font-size: 15px;
 }
-
+.card {
+    height: auto;
+    width: 50%;
+    background: black;
+}
+.tweet {
+    position:inline;
+}
+.cards {
+  display: flex;
+}
+.tweetCard {
+  background: white;
+}
+.globeHeader {
+    color: white;
+    font-style: italic;
+}
+.tweetHeader {
+  color: black;
+}
 .top-right {
     position: absolute;
     top: 8px;
     right: 16px;
+}
+.globeBody {
+      text-align: center;
 }
 
 .master-video-wrapper {
