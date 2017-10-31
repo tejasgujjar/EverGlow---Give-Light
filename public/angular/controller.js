@@ -226,11 +226,11 @@ $scope.get_default_search_results = function(){
     $scope.human = false;
     $scope.tech = false;
     $scope.prog = false;
-    $scope.gloabal =false;
+    $scope.global =false;
 
     this.parent = $scope;
     var myscope  = $scope;
-    
+
     $scope.hide = function() {
       $mdDialog.hide();
     };
