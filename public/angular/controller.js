@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngRoute', 'ngMaterial','madvas.angular-globe']);
+var myApp = angular.module('myApp',['ngRoute', 'ngMaterial','madvas.angular-globe', 'ngtweet']);
 
 myApp.config(function($routeProvider) {
    $routeProvider
@@ -218,6 +218,11 @@ $scope.get_default_search_results = function(){
 }
 
   function FilterDialogController($scope, $mdDialog) {
+    //var vm = $scope;
+    //vm.location1 = "ashadjkj";
+    this.parent = $scope;
+    var myscope  = $scope;
+    $scope.location1 = "oiuyt";
     $scope.hide = function() {
       $mdDialog.hide();
     };
@@ -227,6 +232,8 @@ $scope.get_default_search_results = function(){
     };
 
     $scope.answer = function(answer) {
+      console.log(myscope.location1);
+      console.log("Tets"+$scope.location1);
       $mdDialog.hide(answer);
     };
   }
@@ -268,6 +275,7 @@ $scope.get_default_search_results = function(){
       $mdDialog.hide(answer);
     };
   }
+
   $scope.entered_search = function(){
     console.log("searched val: "+$scope.search_val);
     $scope.progress_bar_flag = true;
