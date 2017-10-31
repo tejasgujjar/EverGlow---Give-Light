@@ -179,7 +179,10 @@ md-tooltip{
   min-height: 30em;
 }
 .search-content{
-  margin: 0px 6%;
+  /*margin: 0px 6%;*/
+  display: flex;
+  float: right;
+  width: 100%;
 }
 .volunteer-profile-pic{
   margin-top: -27px;
@@ -234,4 +237,11 @@ md-tooltip{
 }
 .showPointer{
   cursor: pointer !important;
+}
+.volunteer-block{
+  width: 65%;
+  margin-left: 10%;
+}
+.graph-block{
+  float: right;
 }
