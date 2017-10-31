@@ -51,6 +51,8 @@ app.get('/', function(req, res) {
    });
 
 app.get('/check-status',vol.checkstatus);
+app.get('/searchadvanced',vol.searchadvanced);
+
 
 app.post('/send_mail',email.email_check);
 app.get('/searchall',vol.searchall);

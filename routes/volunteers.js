@@ -27,8 +27,61 @@ var searchall = function(req,res){
 
     var searchString = req.query.search;
 
-    myCollection.find({$or: [ {all_skills: {$elemMatch: {'$regex': searchString,$options:'i'}}},{ "City": {'$regex': searchString,$options:'i'}}, { "Name": {'$regex': searchString,$options:'i'} },{ "Contact Number": {'$regex': searchString,$options:'i'} }]})
+    myCollection.find({$or: [ {all_skills: {$elemMatch: {'$regex': searchString,$options:'i'}}},
+       { "City": {'$regex': searchString,$options:'i'}}, { "Name": {'$regex': searchString,$options:'i'} },
+            { "Contact Number": {'$regex': searchString,$options:'i'} }]})
     //myCollection.find()
+    .toArray(function(err,ans1){
+
+            if(err) {
+            	console.log(err);
+            	return;
+            	}
+
+
+              res
+              .status(200)
+              .json({"test":ans1});
+               db.close();
+    });
+  });
+};
+
+var searchadvanced= function(req,res){
+  console.log("Inside searchadvanced");
+  console.log(req.query);
+  //var obj = JSON.parse(req.query);
+  var obj = req.query;
+  console.log(obj);
+  searchcity = obj.city.toLowerCase();
+
+  MongoClient.connect(mongoSessionConnectURL, function(err, db) {
+    assert.equal(null, err);
+    console.log("Connected correctly to server.");
+    myCollection = db.collection('user_db');
+
+    var searchCity = obj.city.toLowerCase();
+    searchCity = searchCity == "" ? "987654321" : searchCity;
+    var searchGoverning =  obj.gover == "" ? "1":"Governing";
+    var searchOper =  obj.oper== "" ? "1":"Operations";
+    var searchMarket =  obj.market== "" ? "1":"Marketing";
+    var searchHuman =  obj.human== "" ? "1":"Human Resources";
+    var searchTech =  obj.tech== "" ? "1":"Technology";
+    var searchProg =  obj.prog== "" ? "1":"Programs/Outreach";
+    var searchGlobal =  obj.global== "" ? "1":"Global Homes";
+
+    myCollection.find({ $and:[ {$or: [ {all_skills: {$elemMatch: {'$regex': searchGoverning,$options:'i'}}},
+                                       {all_skills: {$elemMatch: {'$regex': searchOper,$options:'i'}}},
+{all_skills: {$elemMatch: {'$regex': searchMarket,$options:'i'}}},
+{all_skills: {$elemMatch: {'$regex': searchHuman,$options:'i'}}},
+{all_skills: {$elemMatch: {'$regex': searchTech,$options:'i'}}},
+{all_skills: {$elemMatch: {'$regex': searchProg,$options:'i'}}},
+{all_skills: {$elemMatch: {'$regex': searchGlobal,$options:'i'}}}
+                                     ]},
+                    { "City": {'$regex': searchCity,$options:'i'} }   ]})
+
+    /*myCollection.find({ $and:[ {$or: [ {all_skills: {$elemMatch: {'$regex': searchGoverning,$options:'i'}}}
+  ]}   ]})*/
     .toArray(function(err,ans1){
 
             if(err) {
@@ -89,7 +142,7 @@ var searchone = function(req,res){
             	console.log(err);
             	return;
             	}
-        
+
 
               res
               .status(200)
@@ -149,6 +202,7 @@ var temp = function(req,res){
 
 
 //exports.temp = temp;
+exports.searchadvanced = searchadvanced;
 exports.checkstatus = checkstatus;
 exports.searchall = searchall;
 exports.searchone = searchone;
