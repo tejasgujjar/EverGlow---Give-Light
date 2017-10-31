@@ -15,6 +15,7 @@ var email = require('./routes/email.js');
 var upcomingevents = require('./routes/upcomingevents.js');
 var locationdetails = require('./routes/getlocation.js');
 var event_volunteer = require('./routes/event_skills_match.js');
+var send_sms = require('./routes/twiliosms.js');
 var http = require('http');
 var app = express();
 var mongoSessionConnectURL = "mongodb://root:root@ds229435.mlab.com:29435/user_db";
@@ -64,6 +65,7 @@ app.get('/event_volunteer',event_volunteer.get_event_skills_match);
 app.get('/event_walk',event_volunteer.get_event_location_match);
 app.post('/locationdetails',locationdetails.locationquery);
 app.get('/getlocationdetails',locationdetails.getlocationquery);
+app.post('/send_sms',send_sms.send_sms);
 
 
 http.createServer(app).listen(app.get('port'), function(){

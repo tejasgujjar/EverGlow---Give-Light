@@ -46,19 +46,6 @@ if(req.query.search == "walkathon"){
           return;
           }
 
-          for(var obj in ans1){
-                 //console.log(ans1[obj]);
-                 var all_skills = [];
-                 if(ans1[obj].T == "Y") all_skills.push("Governing");
-                 if(ans1[obj].E == "Y") all_skills.push("Operations");
-                 if(ans1[obj].G == "Y") all_skills.push("Marketing");
-                 if(ans1[obj].D == "Y") all_skills.push("Human Resources");
-                 if(ans1[obj].M == "Y") all_skills.push("Technology");
-                 if(ans1[obj].W == "Y") all_skills.push("Programs/Outreach");
-                 if(ans1[obj].P == "Y") all_skills.push("Global Homes");
-                 ans1[obj].all_skills = all_skills;
-              }
-
           res
           .status(200)
           .json({"test":ans1});
@@ -77,19 +64,6 @@ else {
       console.log(err);
       return;
       }
-
-      for(var obj in ans1){
-             //console.log(ans1[obj]);
-             var all_skills = [];
-             if(ans1[obj].T == "Y") all_skills.push("Governing");
-             if(ans1[obj].E == "Y") all_skills.push("Operations");
-             if(ans1[obj].G == "Y") all_skills.push("Marketing");
-             if(ans1[obj].D == "Y") all_skills.push("Human Resources");
-             if(ans1[obj].M == "Y") all_skills.push("Technology");
-             if(ans1[obj].W == "Y") all_skills.push("Programs/Outreach");
-             if(ans1[obj].P == "Y") all_skills.push("Global Homes");
-             ans1[obj].all_skills = all_skills;
-          }
 
       res
       .status(200)
