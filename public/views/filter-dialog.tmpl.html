@@ -15,26 +15,23 @@
 
       <md-input-container>
         <label>Location</label>
-        <input ng-model="location1" type="email">
+        <input ng-model="location1" type="text">
       </md-input-container>
       <br>
       <md-input-container>
         <label>Skills</label>
-        <input ng-model="skills" type="email">
+        <input ng-model="skills" type="text">
       </md-input-container>
       <br>
       <md-input-container>
         <label>Event</label>
-        <input ng-model="event" type="email">
+        <input ng-model="event" type="text">
       </md-input-container>
-
       </div>
-
-
 
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button class="md-raised md-primary" ng-click="answer(location1)">
+      <md-button class="md-raised md-primary" ng-click="answer('test')">
        Submit
       </md-button>
       <md-button class="md-warn" ng-click="answer('useful')">
