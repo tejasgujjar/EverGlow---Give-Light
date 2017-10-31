@@ -12,24 +12,31 @@ a {
 }
 .card {
     height: auto;
-    width: 50%;
-    background: black;
+    width: 100%;
+    background: white;
+    /*background-image: url('/images/volunteer.jpg');*/
 }
 .tweet {
     position:inline;
 }
 .cards {
-  display: flex;
+  /*display: flex;*/
 }
 .tweetCard {
-  background: white;
+  background: #9eabab;
 }
 .globeHeader {
-    color: white;
+    color: black;
     font-style: italic;
+}
+.globeFooter {
+    color: black;
 }
 .tweetHeader {
   color: black;
+}
+.tweetContent {
+  height: auto;
 }
 .top-right {
     position: absolute;
@@ -37,7 +44,7 @@ a {
     right: 16px;
 }
 .globeBody {
-      text-align: center;
+      /*text-align: center;*/
 }
 
 .master-video-wrapper {
