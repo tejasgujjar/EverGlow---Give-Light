@@ -15,9 +15,9 @@
     <a class="mainNavbar"  ng-click="showDyk  ()">&nbsp;|&nbsp;Did you Know?</a>
   </div>
 </div>
-<div>
+
   <div class="custom">
-     <div class="master-video-wrapper" style="height:300px;width:100%;">
+     <div class="master-video-wrapper" style="height:25em;width:100%;">
        <video autoplay="autoplay" loop="loop" >
          <source src="videos/bg.mp4" type="video/mp4">
       </video>
@@ -27,37 +27,26 @@
      </div>
    </div>
  </div>
-</div>
-<div class="cards">
-  <md-card class="card">
-    <md-card-content >
-      <h2 class="globeHeader">Our volunteers are spread across the globe look what people tweeting about us. Tweet now with #GiveLightFoundation</h2>
-    </md-card-content>
-    <md-card-body class="globeBody">
-              <m2s-globe
-                     points="points"
-                     point-lat="d.myPosition.lat"
-                     point-lng="d.myPosition.lng"
-                     raised-land="false"
-                     point-id="d.myId"
-                     point-radius="getPointRadius(d)"
-                     point-class="getPointClass(d)"
-                     rotate="true"
-                     rotate-speed=speed
-                     class="advanced-globe"
-                     enter-anim-delay="i * 80"
-                     map-type="countries"
-                     clickable="false"
-                     graticule="false">
-               </m2s-globe>
-               <md-card-content style="float:right;">
-                 <a class="twitter-timeline" href="https://twitter.com/hashtag/GiveLightFoundation" data-chrome="noheader noborders transparent nofooter" data-widget-id="924764337289306112">#GiveLightFoundation Tweets</a>
-               </md-card-content>
-   </md-card-body>
-   <p class="globeFooter">&nbsp;&nbsp;GiveLight has been able to operate primarily using volunteer talents. Click the button below to search for volunteers.</p>
-      <md-button ng-click="go('/search')" class="md-raised md-primary">Search Volunteer</md-button>
- </md-card>
-  <!--md-card class="tweetCard"-->
 
-  <!--/md-card-->
+<div class="globe">
+  <m2s-globe
+         points="points"
+         point-lat="d.myPosition.lat"
+         point-lng="d.myPosition.lng"
+         raised-land="false"
+         point-id="d.myId"
+         point-radius="getPointRadius(d)"
+         point-class="getPointClass(d)"
+         rotate="true"
+         rotate-speed=speed
+         class="advanced-globe"
+         enter-anim-delay="i * 80"
+         map-type="countries"
+         clickable="false"
+         graticule="false">
+   </m2s-globe>
+</div>
+
+<div class="tweet" style="float:right;width:50%;">
+  <a class="twitter-timeline"  href="https://twitter.com/hashtag/GiveLightFoundation" data-chrome="noheader noborders transparent nofooter" data-widget-id="924764337289306112">#GiveLightFoundation Tweets</a>
 </div>
