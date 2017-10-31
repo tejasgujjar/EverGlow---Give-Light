@@ -38,10 +38,58 @@ var searchall = function(req,res){
             	return;
             	}
 
+              var gover = 0;
+              var oper = 0;
+              var market = 0;
+              var human = 0;
+              var tech = 0;
+              var prog = 0;
+              var globalSkill = 0;
+              for(var i in ans1){
+                for(var j in ans1[i].all_skills){
+
+                  if(ans1[i].all_skills[j] == "Governing") gover++;
+                  if(ans1[i].all_skills[j] == "Operations") oper++;
+                  if(ans1[i].all_skills[j] == "Marketing") market++;
+                  if(ans1[i].all_skills[j] == "Human Resources") human++;
+                  if(ans1[i].all_skills[j] == "Technology") tech++;
+                  if(ans1[i].all_skills[j] == "Programs/Outreach") prog++;
+                  if(ans1[i].all_skills[j] == "Global Homes") globalSkill++;
+                }
+              }
+
+              var stats = [{
+                "name" : "Governing",
+                "count" : gover
+              },
+              {
+                "name" : "Operations",
+                "count" : oper
+              },
+              {
+                "name" : "Marketing",
+                "count" : market
+              },
+              {
+                "name" : "Human Resources",
+                "count" : human
+              },
+              {
+                "name" : "Technology",
+                "count" : tech
+              },
+              {
+                "name" : "Programs/Outreach",
+                "count" : prog
+              },
+              {
+                "name" : "Global Homes",
+                "count" : globalSkill
+              }]
 
               res
               .status(200)
-              .json({"test":ans1});
+              .json({"test":ans1,"stats":stats});
                db.close();
     });
   });
@@ -89,10 +137,59 @@ var searchadvanced= function(req,res){
             	return;
             	}
 
+              var gover = 0;
+              var oper = 0;
+              var market = 0;
+              var human = 0;
+              var tech = 0;
+              var prog = 0;
+              var globalSkill = 0;
+              for(var i in ans1){
+                for(var j in ans1[i].all_skills){
+
+                  if(ans1[i].all_skills[j] == "Governing") gover++;
+                  if(ans1[i].all_skills[j] == "Operations") oper++;
+                  if(ans1[i].all_skills[j] == "Marketing") market++;
+                  if(ans1[i].all_skills[j] == "Human Resources") human++;
+                  if(ans1[i].all_skills[j] == "Technology") tech++;
+                  if(ans1[i].all_skills[j] == "Programs/Outreach") prog++;
+                  if(ans1[i].all_skills[j] == "Global Homes") globalSkill++;
+                }
+              }
+
+              var stats = [{
+                "name" : "Governing",
+                "count" : gover
+              },
+              {
+                "name" : "Operations",
+                "count" : oper
+              },
+              {
+                "name" : "Marketing",
+                "count" : market
+              },
+              {
+                "name" : "Human Resources",
+                "count" : human
+              },
+              {
+                "name" : "Technology",
+                "count" : tech
+              },
+              {
+                "name" : "Programs/Outreach",
+                "count" : prog
+              },
+              {
+                "name" : "Global Homes",
+                "count" : globalSkill
+              }]
 
               res
               .status(200)
-              .json({"test":ans1});
+              .json({"test":ans1,"stats":stats});
+
                db.close();
     });
   });
@@ -116,10 +213,58 @@ var searchhome = function(req,res){
             	return;
             	}
 
+              var gover = 0;
+              var oper = 0;
+              var market = 0;
+              var human = 0;
+              var tech = 0;
+              var prog = 0;
+              var globalSkill = 0;
+              for(var i in ans1){
+                for(var j in ans1[i].all_skills){
+
+                  if(ans1[i].all_skills[j] == "Governing") gover++;
+                  if(ans1[i].all_skills[j] == "Operations") oper++;
+                  if(ans1[i].all_skills[j] == "Marketing") market++;
+                  if(ans1[i].all_skills[j] == "Human Resources") human++;
+                  if(ans1[i].all_skills[j] == "Technology") tech++;
+                  if(ans1[i].all_skills[j] == "Programs/Outreach") prog++;
+                  if(ans1[i].all_skills[j] == "Global Homes") globalSkill++;
+                }
+              }
+
+              var stats = [{
+                "name" : "Governing",
+                "count" : gover
+              },
+              {
+                "name" : "Operations",
+                "count" : oper
+              },
+              {
+                "name" : "Marketing",
+                "count" : market
+              },
+              {
+                "name" : "Human Resources",
+                "count" : human
+              },
+              {
+                "name" : "Technology",
+                "count" : tech
+              },
+              {
+                "name" : "Programs/Outreach",
+                "count" : prog
+              },
+              {
+                "name" : "Global Homes",
+                "count" : globalSkill
+              }]
 
               res
               .status(200)
-              .json({"test":ans1});
+              .json({"test":ans1,"stats":stats});
                db.close();
     });
   });
@@ -143,10 +288,58 @@ var searchone = function(req,res){
             	return;
             	}
 
+              var gover = 0;
+              var oper = 0;
+              var market = 0;
+              var human = 0;
+              var tech = 0;
+              var prog = 0;
+              var globalSkill = 0;
+              for(var i in ans1){
+                for(var j in ans1[i].all_skills){
+
+                  if(ans1[i].all_skills[j] == "Governing") gover++;
+                  if(ans1[i].all_skills[j] == "Operations") oper++;
+                  if(ans1[i].all_skills[j] == "Marketing") market++;
+                  if(ans1[i].all_skills[j] == "Human Resources") human++;
+                  if(ans1[i].all_skills[j] == "Technology") tech++;
+                  if(ans1[i].all_skills[j] == "Programs/Outreach") prog++;
+                  if(ans1[i].all_skills[j] == "Global Homes") globalSkill++;
+                }
+              }
+
+              var stats = [{
+                "name" : "Governing",
+                "count" : gover
+              },
+              {
+                "name" : "Operations",
+                "count" : oper
+              },
+              {
+                "name" : "Marketing",
+                "count" : market
+              },
+              {
+                "name" : "Human Resources",
+                "count" : human
+              },
+              {
+                "name" : "Technology",
+                "count" : tech
+              },
+              {
+                "name" : "Programs/Outreach",
+                "count" : prog
+              },
+              {
+                "name" : "Global Homes",
+                "count" : globalSkill
+              }]
 
               res
               .status(200)
-              .json({"test":ans1});
+              .json({"test":ans1,"stats":stats});
                db.close();
     });
   });
