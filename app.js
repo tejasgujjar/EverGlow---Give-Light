@@ -14,6 +14,8 @@ var vol = require('./routes/volunteers.js');
 var email = require('./routes/email.js');
 var upcomingevents = require('./routes/upcomingevents.js');
 var locationdetails = require('./routes/getlocation.js');
+var event_volunteer = require('./routes/event_skills_match.js');
+var send_sms = require('./routes/twiliosms.js');
 var near_me = require('./routes/near_me');
 var http = require('http');
 var app = express();
@@ -63,9 +65,11 @@ app.get('/field_details',field_search.field_details);
 app.get('/mongo_check',upcomingevents.checkstatus);
 app.get('/get_future_events',upcomingevents.get_future_events);
 app.get('/get_past_events',upcomingevents.get_past_events);
-
+app.get('/event_volunteer',event_volunteer.get_event_skills_match);
+app.get('/event_walk',event_volunteer.get_event_location_match);
 app.post('/locationdetails',locationdetails.locationquery);
 app.get('/getlocationdetails',locationdetails.getlocationquery);
+app.post('/send_sms',send_sms.send_sms);
 
 
 http.createServer(app).listen(app.get('port'), function(){
