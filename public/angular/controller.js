@@ -220,9 +220,17 @@ $scope.get_default_search_results = function(){
   function FilterDialogController($scope, $mdDialog) {
     //var vm = $scope;
     //vm.location1 = "ashadjkj";
+    $scope.gover = false;
+    $scope.oper = false;
+    $scope.market = false;
+    $scope.human = false;
+    $scope.tech = false;
+    $scope.prog = false;
+    $scope.gloabal =false;
+
     this.parent = $scope;
     var myscope  = $scope;
-    $scope.location1 = "oiuyt";
+    
     $scope.hide = function() {
       $mdDialog.hide();
     };
