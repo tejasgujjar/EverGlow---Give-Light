@@ -17,7 +17,18 @@ var options = {
 
 
 
+var testnear = function(req,res){
+  var geocoder = NodeGeocoder(options);
+  geocoder.geocode('San Jose', function(err, res) {
+  console.log(res);
+});
 
+res
+              .status(200)
+              .json({"field_details":""});
+
+
+}
 
 
 var nearme = function(req,res){
@@ -55,16 +66,7 @@ for(var city in name_city){
     if(name_city[city] == ""){
         continue;
     }
-    var options = {
-      provider: 'google',
 
-     // Optional depending on the providers
-      httpAdapter: 'https', // Default
-      apiKey: 'AIzaSyCMmLAeJIEBZ_Ckajl3IGGPiTfXSKAx-do', // for Mapquest, OpenCage, Google Premier
-      formatter: null         // 'gpx', 'string', ...
-    };
-    
-     var geocoder = NodeGeocoder(options);
      geocoder.geocode("San Jose", function(err, results) {
               console.log(results);
               if(typeof results == 'undefined'){
@@ -116,5 +118,5 @@ for(var i = 0; i<results.length; i++){
 
 });
 }
-
+exports.testnear = testnear;
 exports.nearme = nearme;
