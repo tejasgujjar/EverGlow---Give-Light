@@ -311,10 +311,18 @@ md-tooltip{
 }
 
 .profiledetails {
-  width:  800px;
-  height: 800px;
+  /*width:  800px;
+  height: 800px;*/
   background: azure;
+  height:50rem;
+  width: 80rem;
 }
+.profiledetails after{
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
 .userdetails {
   padding-top: 20%;
   background: azure;
@@ -330,7 +338,7 @@ md-tooltip{
 .img-circle {
   border-radius: 50%;
   height: 30%;
-  top: 60px;
+  top: 8%;
   display: block;
   margin: 0 auto;
   position: absolute;
