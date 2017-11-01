@@ -33,12 +33,14 @@ var get_event_location_match = function(req,res){
         "$options": "i"
     }
 };
+console.log(req.query.search);
   // db.collection("events_listr").find(query).toArray(function(err, result) {
   //   if(err) {
   //     console.log(err);
   //     return;
   //     }
 if(req.query.search == "walkathon"){
+     console.log("Inside if");
       var query = { $or: [ { "E":"Y" }, { "D":"Y" }  ] };
       db.collection("user_db").find(query).toArray(function(err, ans1) {
         if(err) {
@@ -109,6 +111,7 @@ if(req.query.search == "walkathon"){
   });
 }
 else {
+  console.log("Inside else");
   var query = { $or: [ { "G":"Y" }, { "W":"Y" }  ] };
   db.collection("user_db").find(query).toArray(function(err, ans1) {
     if(err) {

@@ -292,7 +292,7 @@ $scope.get_default_search_results = function(){
         $http({
               method: 'GET',
               url: '/event_walk',
-              params : searchobj
+              params : {"search": $scope.event}
              }).then(function (success){
                 console.log("Success");
                 console.log(success.data);
@@ -394,6 +394,23 @@ $scope.get_default_search_results = function(){
         $scope.status = 'You cancelled the dialog.';
       });
   }
+
+$scope.getNearMe = function(ev) {
+  console.log("Clicked near me");
+  $http({
+        method: 'GET',
+        url: '/event_walk',
+        params : {"search": $scope.event}
+       }).then(function (success){
+          console.log("Success");
+          console.log(success.data);
+          $superScope.volunteers_list = success.data.test;
+
+       },function (error){
+          console.log("Failure");
+      });
+
+};
 
   $scope.showAdvanced = function(ev) {
     console.log("Show advanced filter dialog");
