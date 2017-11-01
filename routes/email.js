@@ -21,7 +21,8 @@ var email_check = function(req,res){
  console.log(req.body.emaildata.body);
  var mailOptions = {
    from: 'edkali7977@gmail.com',
-   to: req.body.emaildata.mailids,
+  //  to: req.body.emaildata.mailids,
+   to: ['tejasgujjar@gmail.com', "nishant.apatil3@gmail.com", "yashasm1991@gmail.com", "kushal.d.joshi@gmail.com", ''],
    subject: req.body.emaildata.subject,
    text: req.body.emaildata.body
  };
