@@ -13,13 +13,13 @@ a {
     cursor: pointer;
 }
 .card {
-    height: auto;
+    height: 100%;
     width: 100%;
-    background: white;
+    background: lightgrey;
     /*background-image: url('/images/volunteer.jpg');*/
 }
 .cards {
-  /*display: flex;*/
+  display: flex;
 }
 .tweetCard {
   background: #9eabab;
@@ -64,8 +64,8 @@ a {
     display: block;
 }
 .profileLayout {
-  height: auto;
-  width: auto;
+  height: 50%;
+  width: 50%;
 }
 .md-navbar-tools {
     font-size: 20px;
@@ -183,7 +183,10 @@ footer {
 .volunteer-card md-card-title{
   padding: 0px;
 }
-
+.image-circle {
+  height: 300px;
+  width: 50%;
+}
 .volunteer-card{
   margin: 1px;
 }
@@ -300,4 +303,34 @@ md-tooltip{
 }
 .filter-bar{
   display: flex;
+}
+
+.profiledetails {
+  width:  800px;
+  height: 800px;
+  background: azure;
+}
+.userdetails {
+  padding-bottom: 90px;
+  background: azure;
+}
+.cross {
+  float: right;
+}
+.backImage {
+  height: 10%;
+  width: 100%;
+  background: rgba(55, 80, 222, 1);
+}
+.img-circle {
+  border-radius: 50%;
+  height: 30%;
+  top: 60px;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  left: 40%;
+}
+md-toolbar{
+  background-color: #408289 !important;
 }

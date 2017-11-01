@@ -237,6 +237,7 @@ $scope.get_default_search_results = function(){
     $scope.prog = false;
     $scope.global =false;
     $scope.city = "";
+    $scope.eventslist = ["walkathon","lunch"];
 
     this.parent = $scope;
     var myscope  = $scope;
@@ -271,19 +272,44 @@ $scope.get_default_search_results = function(){
           "global" : $scope.global == "" ? "" : $scope.global
       }
 
+      console.log("test event"+$scope.event);
+      if(typeof $scope.event == 'undefined' || $scope.event == 'None'){
+        console.log("handle this case");
+        $http({
+              method: 'GET',
+              url: '/searchadvanced',
+              params : searchobj
+             }).then(function (success){
+                console.log("Success");
+                console.log(success.data);
+                $superScope.volunteers_list = success.data.test;
+                refresh_chart(success.data.stats);
+             },function (error){
+                console.log("Failure");
+            });
+      }
+      else{
 
-      $http({
-            method: 'GET',
-            url: '/searchadvanced',
-            params : searchobj
-           }).then(function (success){
-              console.log("Success");
-              console.log(success.data);
-              $superScope.volunteers_list = success.data.test;
+        $http({
+              method: 'GET',
+              url: '/event_walk',
+              params : {"search": $scope.event}
+             }).then(function (success){
+                console.log("Success");
+                console.log(success.data);
+                $superScope.volunteers_list = success.data.test;
+                console.log("Event basss");
+                volunteerChart.series[0].setData(success.data.stats);
 
-           },function (error){
-              console.log("Failure");
-          });
+                // refresh_chart(success.data.stats);
+             },function (error){
+                console.log("Failure");
+            });
+
+      }
+
+
+
 
       $mdDialog.hide(answer);
     };
@@ -333,7 +359,20 @@ $scope.get_default_search_results = function(){
   function ProfileDialogController($scope, $mdDialog, volunteerDetail){
     var volunteer = volunteerDetail;
     console.log("Profile controller: "+volunteer.Name);
-
+    $scope.name = volunteer.Name;
+    $scope.city = volunteer.city;
+    $scope.emailId = volunteer['Email Address'];
+    console.log("email address: "+$scope.emailId);
+    $scope.state = volunteer.State;
+    console.log("state is: "+$scope.state);
+    $scope.phone = volunteer['Contact Number'];
+    console.log("volunteer contact: "+$scope.phone);
+    $scope.city = volunteer.City;
+    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+    'WY').split(' ').map(function(state) {
+        return {abbrev: state};
+      });
     $scope.hide = function() {
       $mdDialog.hide();
     };
@@ -355,6 +394,7 @@ $scope.get_default_search_results = function(){
   $scope.showProfile = function(ev, volunteer){
       console.log('show profile pic');
       console.log("Show advanced filter dialog");
+      console.log(volunteer);
       $mdDialog.show({
         controller: ProfileDialogController,
         templateUrl: 'views/profile-dialog.tmpl.html',
@@ -372,6 +412,25 @@ $scope.get_default_search_results = function(){
         $scope.status = 'You cancelled the dialog.';
       });
   }
+
+$scope.getNearMe = function(ev) {
+  console.log("Clicked near me");
+  $scope.progress_bar_flag = true;
+  $http({
+        method: 'GET',
+        url: '/getnearme'
+       }).then(function (success){
+          console.log("Success");
+          console.log(success.data);
+          $superScope.volunteers_list = success.data.test;
+          refresh_chart(success.data.stats);
+          $scope.progress_bar_flag = false;
+       },function (error){
+          console.log("Failure");
+          $scope.progress_bar_flag = false;
+      });
+
+};
 
   $scope.showAdvanced = function(ev) {
     console.log("Show advanced filter dialog");
