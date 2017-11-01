@@ -228,6 +228,7 @@ $scope.get_default_search_results = function(){
     $scope.prog = false;
     $scope.global =false;
     $scope.city = "";
+    $scope.eventslist = ["walkathon","lunch"];
 
     this.parent = $scope;
     var myscope  = $scope;
@@ -262,19 +263,41 @@ $scope.get_default_search_results = function(){
           "global" : $scope.global == "" ? "" : $scope.global
       }
 
+      console.log("test event"+$scope.event);
+      if(typeof $scope.event == 'undefined' || $scope.event == 'None'){
+        console.log("handle this case");
+        $http({
+              method: 'GET',
+              url: '/searchadvanced',
+              params : searchobj
+             }).then(function (success){
+                console.log("Success");
+                console.log(success.data);
+                $superScope.volunteers_list = success.data.test;
 
-      $http({
-            method: 'GET',
-            url: '/searchadvanced',
-            params : searchobj
-           }).then(function (success){
-              console.log("Success");
-              console.log(success.data);
-              $superScope.volunteers_list = success.data.test;
+             },function (error){
+                console.log("Failure");
+            });
+      }
+      else{
 
-           },function (error){
-              console.log("Failure");
-          });
+        $http({
+              method: 'GET',
+              url: '/event_walk',
+              params : searchobj
+             }).then(function (success){
+                console.log("Success");
+                console.log(success.data);
+                $superScope.volunteers_list = success.data.test;
+
+             },function (error){
+                console.log("Failure");
+            });
+
+      }
+
+
+
 
       $mdDialog.hide(answer);
     };
