@@ -311,10 +311,18 @@ md-tooltip{
 }
 
 .profiledetails {
-  width:  800px;
-  height: 800px;
+  /*width:  800px;
+  height: 800px;*/
   background: azure;
+  height:50rem;
+  width: 80rem;
 }
+.profiledetails after{
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
 .userdetails {
   padding-top: 20%;
   background: azure;
