@@ -10,6 +10,11 @@ a {
     color: white;
     font-size: 15px;
 }
+.details {
+    font-size: 21px;
+    text-align: center;
+    font-style: inherit;
+}
 .card {
     height: 100%;
     width: 100%;
@@ -287,7 +292,7 @@ md-tooltip{
   background: azure;
 }
 .userdetails {
-  padding-bottom: 90px;
+  padding-top: 20%;
   background: azure;
 }
 .cross {
@@ -296,7 +301,7 @@ md-tooltip{
 .backImage {
   height: 10%;
   width: 100%;
-  background: rgba(55, 80, 222, 1);
+  background: #408289;
 }
 .img-circle {
   border-radius: 50%;
