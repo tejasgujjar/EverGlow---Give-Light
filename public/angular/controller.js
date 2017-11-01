@@ -35,6 +35,7 @@ console.log("Loading main page");
 
 myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',function($scope,$http,$location,$mdDialog){
   $scope.go = function ( path ) {
+    console.log("nav to search page");
     $location.path( path );
   };
 
@@ -84,7 +85,7 @@ myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',func
 function AdvancedCtrl() {
   /* jshint validthis: true */
   var vm = this;
-  $scope.speed = 3;
+  $scope.speed = 2;
   $scope.getPointClass = getPointClass;
   $scope.getPointRadius = getPointRadius;
   activate();

@@ -7,8 +7,10 @@ a {
   color: #00B7FF;
 }
 .mainNavbar {
-    color: white;
+    color: #408289;
     font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
 }
 .card {
     height: auto;
@@ -85,7 +87,7 @@ a {
     max-height: 64px;
     padding: 0 16px;
     margin: 0;
-    background: black;
+    background: white;
 }
 .master-video{
 width: 100%;
@@ -104,6 +106,7 @@ height: auto;
   bottom: 0;
   margin: auto;
   color: #fff;
+  z-index: 2;
 }
 .master-title {
   font-size: 50px;
@@ -276,4 +279,25 @@ md-tooltip{
 }
 .md-button.md-customprimary:hover{
   background-color: rgb(64, 82, 181) !important;
+}
+.twitter-timeline{
+  width: 54em !important;
+}
+.search-toolbar-header{
+  /*background-image: url('/images/search-bg-3.jpg') !important;*/
+  background-color: #408289 !important;
+}
+.main-body{
+  /*background-image: url('https://fsb.zobj.net/crop.php?r=qCWSmHgHZ-xQT2_Dvh25rXpXO_83sisKOMmZcWPNVg5SqYoDS_gOfDsMfBeA8_yDHsR6DQpmp0YU0PHXTigFOGw8xPlJuxUfwUy_0uZnPNALmnvnxeb-yQowpnGEOhODNuf7HWGQ7TKHEyRNaS9RstddnPNWnd-Ndfxrkg') !important;*/
+}
+.nav-divider{
+  color: rgba(131, 136, 255, 0.74);
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+.md-primary{
+  background-color: #408289 !important;
+}
+.filter-bar{
+  display: flex;
 }

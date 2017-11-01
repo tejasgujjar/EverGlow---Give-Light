@@ -1,5 +1,5 @@
 <div>
-  <md-toolbar class="md-primary ">
+  <md-toolbar class="md-primary search-toolbar-header">
     <div class="md-toolbar-tools">
       <span class="logo">
         <img src="/images/logo_lg-white.png" alt="bizlogo" width="20%"/>
@@ -10,12 +10,17 @@
         <div class="search-bar">
           <md-input-container md-no-float class="md-block search-input-box">
            <input ng-keyup="entered_search()" ng-model="search_val" placeholder="Search Volunteer">
+           <!-- <img src="/images/nearme.png" /> -->
          </md-input-container>
         </div>
         <div class="filter-bar">
           <md-button ng-click="showAdvanced($event)" class="md-icon-button" aria-label="More">
             <md-tooltip md-direction="bottom" >Advanced search</md-tooltip>
             <md-icon md-svg-icon="/images/filter-2.svg"></md-icon>
+          </md-button>
+          <md-button ng-click="showAdvanced($event)" class="md-icon-button" aria-label="More">
+            <md-tooltip md-direction="bottom" >Volunteers near me</md-tooltip>
+            <md-icon md-svg-icon="/images/nearme2.svg"></md-icon>
           </md-button>
           <!-- <md-button class="md-raised md-primary" ng-click="">Filter</md-button> -->
         </div>
