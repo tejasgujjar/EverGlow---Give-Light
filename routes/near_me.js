@@ -15,10 +15,13 @@ var options = {
   formatter: null         // 'gpx', 'string', ...
 };
 
-
+var geocoder = NodeGeocoder(options);
 
 var testnear = function(req,res){
-  var geocoder = NodeGeocoder(options);
+
+  
+
+  
   geocoder.geocode('San Jose', function(err, res) {
   console.log(res);
 });
@@ -26,6 +29,7 @@ var testnear = function(req,res){
 res
               .status(200)
               .json({"field_details":""});
+
 
 
 }
@@ -67,7 +71,7 @@ for(var city in name_city){
         continue;
     }
 
-     geocoder.geocode("San Jose", function(err, results) {
+     geocoder.geocode(name_city[city], function(err, results) {
               console.log(results);
               if(typeof results == 'undefined'){
 
