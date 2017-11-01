@@ -282,7 +282,7 @@ $scope.get_default_search_results = function(){
                 console.log("Success");
                 console.log(success.data);
                 $superScope.volunteers_list = success.data.test;
-
+                refresh_chart(success.data.stats);
              },function (error){
                 console.log("Failure");
             });
@@ -297,7 +297,10 @@ $scope.get_default_search_results = function(){
                 console.log("Success");
                 console.log(success.data);
                 $superScope.volunteers_list = success.data.test;
+                console.log("Event basss");
+                volunteerChart.series[0].setData(success.data.stats);
 
+                // refresh_chart(success.data.stats);
              },function (error){
                 console.log("Failure");
             });
@@ -399,12 +402,12 @@ $scope.getNearMe = function(ev) {
   console.log("Clicked near me");
   $http({
         method: 'GET',
-        url: '/event_walk',
-        params : {"search": $scope.event}
+        url: '/getnearme'
        }).then(function (success){
           console.log("Success");
           console.log(success.data);
           $superScope.volunteers_list = success.data.test;
+          refresh_chart(success.data.stats);
 
        },function (error){
           console.log("Failure");

@@ -17,6 +17,7 @@ var locationdetails = require('./routes/getlocation.js');
 var event_volunteer = require('./routes/event_skills_match.js');
 var send_sms = require('./routes/twiliosms.js');
 var near_me = require('./routes/near_me');
+var getnearme = require('./routes/get_nearme');
 var http = require('http');
 var app = express();
 var mongoSessionConnectURL = "mongodb://root:root@ds229435.mlab.com:29435/user_db";
@@ -60,6 +61,7 @@ app.get('/searchone',vol.searchone);
 app.get('/searchhome',vol.searchhome);
 
 app.get('/nearme',near_me.nearme);
+app.get('/getnearme',getnearme.getnearmeusers);
 app.get('/testnearme',near_me.testnear);
 
 app.get('/field_details',field_search.field_details);
