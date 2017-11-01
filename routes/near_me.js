@@ -12,8 +12,8 @@ var options = {
 
  // Optional depending on the providers
   httpAdapter: 'https', // Default
-  //apiKey: 'AIzaSyCMmLAeJIEBZ_Ckajl3IGGPiTfXSKAx-do', // for Mapquest, OpenCage, Google Premier
-  apiKey: 'AIzaSyBYvmEYbY9AfH28f70hDwGFnQXcqJGaevQ',
+  apiKey: 'AIzaSyCMmLAeJIEBZ_Ckajl3IGGPiTfXSKAx-do', // for Mapquest, OpenCage, Google Premier
+
   formatter: null         // 'gpx', 'string', ...
 };
 
@@ -194,5 +194,7 @@ for(var i = 0; i<results.length; i++){
 
 });
 }
+
+
 exports.testnear = testnear;
 exports.nearme = nearme;
