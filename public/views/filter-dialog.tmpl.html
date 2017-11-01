@@ -61,11 +61,27 @@
       </md-checkbox>
       &nbsp;&nbsp;&nbsp;
 
+
+
       <br>
       <br>
 
+      <hr>
 
-
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Event Based Search
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <md-input-container>
+         <label>Events</label>
+         <md-select ng-model="event">
+           <md-option><em>None</em></md-option>
+           <md-option ng-repeat="ev in eventslist" ng-value="ev">
+             {{ev}}
+           </md-option>
+         </md-select>
+       </md-input-container>
 
     <md-dialog-actions layout="row">
       <span flex></span>

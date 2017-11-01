@@ -236,6 +236,7 @@ $scope.get_default_search_results = function(){
     $scope.prog = false;
     $scope.global =false;
     $scope.city = "";
+    $scope.eventslist = ["walkathon","lunch"];
 
     this.parent = $scope;
     var myscope  = $scope;
@@ -270,19 +271,44 @@ $scope.get_default_search_results = function(){
           "global" : $scope.global == "" ? "" : $scope.global
       }
 
+      console.log("test event"+$scope.event);
+      if(typeof $scope.event == 'undefined' || $scope.event == 'None'){
+        console.log("handle this case");
+        $http({
+              method: 'GET',
+              url: '/searchadvanced',
+              params : searchobj
+             }).then(function (success){
+                console.log("Success");
+                console.log(success.data);
+                $superScope.volunteers_list = success.data.test;
+                refresh_chart(success.data.stats);
+             },function (error){
+                console.log("Failure");
+            });
+      }
+      else{
 
-      $http({
-            method: 'GET',
-            url: '/searchadvanced',
-            params : searchobj
-           }).then(function (success){
-              console.log("Success");
-              console.log(success.data);
-              $superScope.volunteers_list = success.data.test;
+        $http({
+              method: 'GET',
+              url: '/event_walk',
+              params : {"search": $scope.event}
+             }).then(function (success){
+                console.log("Success");
+                console.log(success.data);
+                $superScope.volunteers_list = success.data.test;
+                console.log("Event basss");
+                volunteerChart.series[0].setData(success.data.stats);
 
-           },function (error){
-              console.log("Failure");
-          });
+                // refresh_chart(success.data.stats);
+             },function (error){
+                console.log("Failure");
+            });
+
+      }
+
+
+
 
       $mdDialog.hide(answer);
     };
@@ -371,6 +397,23 @@ $scope.get_default_search_results = function(){
         $scope.status = 'You cancelled the dialog.';
       });
   }
+
+$scope.getNearMe = function(ev) {
+  console.log("Clicked near me");
+  $http({
+        method: 'GET',
+        url: '/getnearme'
+       }).then(function (success){
+          console.log("Success");
+          console.log(success.data);
+          $superScope.volunteers_list = success.data.test;
+          refresh_chart(success.data.stats);
+
+       },function (error){
+          console.log("Failure");
+      });
+
+};
 
   $scope.showAdvanced = function(ev) {
     console.log("Show advanced filter dialog");

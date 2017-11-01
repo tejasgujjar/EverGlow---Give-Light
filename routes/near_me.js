@@ -3,6 +3,7 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var mongoSessionConnectURL = "mongodb://root:root@ds229435.mlab.com:29435/user_db";
 var geolib = require('geolib');
+var mongo = require('mongodb');
 
 
 
@@ -12,6 +13,7 @@ var options = {
  // Optional depending on the providers
   httpAdapter: 'https', // Default
   apiKey: 'AIzaSyCMmLAeJIEBZ_Ckajl3IGGPiTfXSKAx-do', // for Mapquest, OpenCage, Google Premier
+
   formatter: null         // 'gpx', 'string', ...
 };
 
@@ -19,16 +21,17 @@ var geocoder = NodeGeocoder(options);
 
 var testnear = function(req,res){
 
-  
 
-  
+
+
   geocoder.geocode('San Jose', function(err, res) {
   console.log(res);
 });
 
-res
-              .status(200)
-              .json({"field_details":""});
+
+// res
+//               .status(200)
+//               .json({"field_details":""});
 
 
 
@@ -122,5 +125,7 @@ for(var i = 0; i<results.length; i++){
 
 });
 }
+
+
 exports.testnear = testnear;
 exports.nearme = nearme;

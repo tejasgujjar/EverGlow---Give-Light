@@ -128,6 +128,8 @@ var searchadvanced= function(req,res){
                                      ]},
                     { "City": {'$regex': searchCity,$options:'i'} }   ]})
 
+
+
     /*myCollection.find({ $and:[ {$or: [ {all_skills: {$elemMatch: {'$regex': searchGoverning,$options:'i'}}}
   ]}   ]})*/
     .toArray(function(err,ans1){
