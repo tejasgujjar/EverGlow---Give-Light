@@ -1,38 +1,36 @@
-<md-dialog class="profileLayout">
-  <form ng-cloak>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>Profile Details</h2>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-svg-src="/images/cancel.svg" aria-label="Close dialog"></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-
-    <form name="userForm">
-      <img class="profileImage" style="float:center;" src="images/profilePic.png">
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Name</label>
-          <input ng-model="user.firstName">
-        </md-input-container>
-      </div>
-      <md-input-container class="md-block">
-        <label>Address</label>
-        <input ng-model="user.address">
-      </md-input-container>
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Phone Number</label>
-          <input ng-model="user.city">
-        </md-input-container>
-      </div>
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Interests</label>
-          <input ng-model="user.city">
-        </md-input-container>
-      </div>
-    </form>
-</md-dialog>
+<div class="profiledetails">
+  <div class="backImage">
+    <div class="cross">
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon md-svg-src="images/close.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </div>
+  <img alt="User Pic" src="images/profile-pic-user.jpg" class="img-circle img-responsive">
+</div>
+<div class="userdetails">
+  <table class="table table-user-information">
+    <tbody>
+      <tr>
+        <td>First Name:</td>
+        <td>{{name}}</td>
+      </tr>
+        <tr>
+        <tr>
+        <td>City</td>
+        <td>{{city}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><a href="mailto:info@support.com">{{emailId}}</a></td>
+      </tr>
+      <tr>
+      <tr>
+      <tr>
+        <td>Phone Number</td>
+        <td>{{phone}}<br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -358,7 +358,20 @@ $scope.get_default_search_results = function(){
   function ProfileDialogController($scope, $mdDialog, volunteerDetail){
     var volunteer = volunteerDetail;
     console.log("Profile controller: "+volunteer.Name);
-
+    $scope.name = volunteer.Name;
+    $scope.city = volunteer.city;
+    $scope.emailId = volunteer['Email Address'];
+    console.log("email address: "+$scope.emailId);
+    $scope.state = volunteer.State;
+    console.log("state is: "+$scope.state);
+    $scope.phone = volunteer['Contact Number'];
+    console.log("volunteer contact: "+$scope.phone);
+    $scope.city = volunteer.City;
+    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+    'WY').split(' ').map(function(state) {
+        return {abbrev: state};
+      });
     $scope.hide = function() {
       $mdDialog.hide();
     };
@@ -380,6 +393,7 @@ $scope.get_default_search_results = function(){
   $scope.showProfile = function(ev, volunteer){
       console.log('show profile pic');
       console.log("Show advanced filter dialog");
+      console.log(volunteer);
       $mdDialog.show({
         controller: ProfileDialogController,
         templateUrl: 'views/profile-dialog.tmpl.html',
