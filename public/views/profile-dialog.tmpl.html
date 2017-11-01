@@ -6,31 +6,29 @@
       </md-button>
     </div>
   </div>
-  <img alt="User Pic" src="images/profile-pic-user.jpg" class="img-circle img-responsive">
-</div>
+  <img alt="User Pic" src="images/profile-pic-user2.png" class="img-circle img-responsive">
 <div class="userdetails">
-  <table class="table table-user-information">
-    <tbody>
-      <tr>
-        <td>First Name:</td>
-        <td>{{name}}</td>
-      </tr>
-        <tr>
-        <tr>
-        <td>City</td>
-        <td>{{city}}</td>
-      </tr>
-      <tr>
-        <td>Email</td>
-        <td><a href="mailto:info@support.com">{{emailId}}</a></td>
-      </tr>
-      <tr>
-      <tr>
-      <tr>
-        <td>Phone Number</td>
-        <td>{{phone}}<br>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <form>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+      <div class="details">  Name:&nbsp;&nbsp;&nbsp;{{name}} </div>
+      </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+      <div class="details">  City:&nbsp;&nbsp;&nbsp;{{city}} </div>
+      </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+      <div class="details">Email:<a href="mailto:info@support.com">&nbsp;&nbsp;&nbsp;{{emailId}}</a> </div>
+      </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+      <div class="details">Phone Number:&nbsp;&nbsp;&nbsp;{{phone}}</div>
+      </md-input-container>
+    </div>
+  </form>
+</div>
 </div>
