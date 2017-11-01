@@ -35,6 +35,7 @@ console.log("Loading main page");
 
 myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',function($scope,$http,$location,$mdDialog){
   $scope.go = function ( path ) {
+    console.log("nav to search page");
     $location.path( path );
   };
 
@@ -84,7 +85,7 @@ myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',func
 function AdvancedCtrl() {
   /* jshint validthis: true */
   var vm = this;
-  $scope.speed = 3;
+  $scope.speed = 2;
   $scope.getPointClass = getPointClass;
   $scope.getPointRadius = getPointRadius;
   activate();
@@ -414,6 +415,7 @@ $scope.get_default_search_results = function(){
 
 $scope.getNearMe = function(ev) {
   console.log("Clicked near me");
+  $scope.progress_bar_flag = true;
   $http({
         method: 'GET',
         url: '/getnearme'
@@ -422,9 +424,10 @@ $scope.getNearMe = function(ev) {
           console.log(success.data);
           $superScope.volunteers_list = success.data.test;
           refresh_chart(success.data.stats);
-
+          $scope.progress_bar_flag = false;
        },function (error){
           console.log("Failure");
+          $scope.progress_bar_flag = false;
       });
 
 };
