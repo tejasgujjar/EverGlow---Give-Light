@@ -50,6 +50,13 @@ myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',func
   $scope.cancel = function() {
       $mdDialog.cancel();
     };
+  $scope.showLogin = function() {
+    $mdDialog.show({
+      controller: 'HomeController',
+      templateUrl: 'views/login.html',
+      clickOutsideToClose:true,
+    })
+  };
   $scope.showContact = function() {
       $mdDialog.show({
         controller: 'HomeController',
