@@ -184,11 +184,41 @@ AdvancedCtrl();
 
 }]);
 
-myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDialog','$mdToast',function($scope,$http,$q, $timeout,$mdDialog,$mdToast){
+myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDialog','$mdToast','$location',function($scope,$http,$q, $timeout,$mdDialog,$mdToast,$location){
   console.log("search controller");
   $scope.volunteers_list = [];
   var testdata = [{"_id":"59f57a8d8a207563dd30dc3c","Name":"Elaf","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""},{"_id":"89f57a8d8a207563dd30dc3c","Name":"Tejas","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""}];
 
+  $scope.event = null;
+  $scope.events = null;
+
+  $scope.loadPlanEvents = function(){
+    return $timeout(function(){
+        $scope.events = [
+          { id:1, name:'walkathon'},
+          { id:2, name:'lunch'},
+        ]
+    }, 650);
+  }
+  $scope.selected_plan = function(event_name){
+    $scope.progress_bar_flag = true;
+    $http({
+          method: 'GET',
+          url: '/event_walk',
+          params : {"search": event_name}
+         }).then(function (success){
+            console.log("Success");
+            console.log(success.data);
+            $scope.volunteers_list = success.data.test;
+            console.log("Event basss");
+            volunteerChart.series[0].setData(success.data.stats);
+            $scope.progress_bar_flag = false;
+            // refresh_chart(success.data.stats);
+         },function (error){
+            console.log("Failure");
+            $scope.progress_bar_flag = false;
+        });
+  }
   $scope.progress_bar_flag = false;
   $scope.get_search_results = function(search_str){
     $http({
@@ -209,7 +239,9 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
             refresh_chart([]);
 				});
   }
-
+$scope.clicked_logo = function(page){
+  $location.href = "http://givelight-everglow.herokuapp.com/#!/";
+}
 $scope.get_default_search_results = function(){
   $http({
         method: 'GET',
@@ -280,6 +312,7 @@ $scope.get_default_search_results = function(){
       }
 
       console.log("test event"+$scope.event);
+      $superScope.progress_bar_flag = true;
       if(typeof $scope.event == 'undefined' || $scope.event == 'None'){
         console.log("handle this case");
         $http({
@@ -291,8 +324,10 @@ $scope.get_default_search_results = function(){
                 console.log(success.data);
                 $superScope.volunteers_list = success.data.test;
                 refresh_chart(success.data.stats);
+                $superScope.progress_bar_flag = false;
              },function (error){
                 console.log("Failure");
+                $superScope.progress_bar_flag = false;
             });
       }
       else{
@@ -307,10 +342,11 @@ $scope.get_default_search_results = function(){
                 $superScope.volunteers_list = success.data.test;
                 console.log("Event basss");
                 volunteerChart.series[0].setData(success.data.stats);
-
+                $superScope.progress_bar_flag = false;
                 // refresh_chart(success.data.stats);
              },function (error){
                 console.log("Failure");
+                $superScope.progress_bar_flag = false;
             });
 
       }

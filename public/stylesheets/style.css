@@ -57,7 +57,7 @@ a {
   /*background-image: url('images/header-bg.png');*/
   /*background-size: cover;
   background-position: center;*/
-  height: 30em;
+  height: 35em;
   width: 100%;
   min-width: 100%;
 
@@ -92,7 +92,9 @@ a {
     max-height: 64px;
     padding: 0 16px;
     margin: 0;
-    background: white;
+    /*background: white;*/
+    position: absolute;
+    top: -9.5em;
 }
 .master-video{
 width: 100%;
@@ -117,6 +119,7 @@ height: auto;
   font-size: 50px;
   font-weight: 500;
   margin-top: 10px;
+  font-family: fantasy;
 }
 .title{
   padding: 20px;
@@ -126,6 +129,7 @@ height: auto;
   width: 100%;
 }
 .master-sub-title {
+  font-family: fantasy;
   margin: 20px 0 50px 0;
   font-size: 20px;
   color: rgba(255, 255, 255, 0.8);
@@ -151,9 +155,10 @@ height: auto;
 .globe {
     position: absolute;
     top: 50%;
+
 }
 .tweet {
-    padding-top: 5%;
+    padding-top: 3%;
 }
 footer {
   position: realtive;
@@ -163,12 +168,22 @@ footer {
   padding: 1rem;
   background-color: #efefef;
   text-align: center;
+  height:8em;
+  /*bacrgba(12, 12, 12, 0.17)*/
 }
 
-.logo{
+.logo-s{
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+.logo{
+  margin-left: 0px;
+  margin-right: auto;
+  text-align: center;
+}
+.logo img{
+  float: left;
 }
 .search-header{
   background-color: rgba(53, 36, 50, 0.87) !important;
@@ -278,6 +293,8 @@ md-tooltip{
 .volunteer-block{
   width: 65%;
   margin-left: 10%;
+  height:50em;
+  overflow: auto;
 }
 .graph-block{
   float: right;
@@ -296,6 +313,7 @@ md-tooltip{
   background-color: #408289 !important;
 }
 .main-body{
+  background-color: lavender;
   /*background-image: url('https://fsb.zobj.net/crop.php?r=qCWSmHgHZ-xQT2_Dvh25rXpXO_83sisKOMmZcWPNVg5SqYoDS_gOfDsMfBeA8_yDHsR6DQpmp0YU0PHXTigFOGw8xPlJuxUfwUy_0uZnPNALmnvnxeb-yQowpnGEOhODNuf7HWGQ7TKHEyRNaS9RstddnPNWnd-Ndfxrkg') !important;*/
 }
 .nav-divider{
@@ -346,4 +364,23 @@ md-tooltip{
 }
 md-toolbar{
   background-color: #408289 !important;
+}
+.toolbar-actions{
+  width: 75%;
+  margin: auto;
+}
+.twitter-globe-block{
+  display: flex;
+  /*background-image: linear-gradient(to bottom, rgba(30, 85, 177, 0.5), #fff 5%);*/
+}
+.timeline-TweetList-tweet {
+  border: 1px solid grey !important;
+  margin: 6px !important;
+  border-radius: 10px !important;
+}
+.tweet-list-card{
+  float:right !important;
+  height:fit-content !important;
+  border-radius:20px !important;
+  margin-left: 40%;
 }
