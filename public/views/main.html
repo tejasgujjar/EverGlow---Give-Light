@@ -1,23 +1,26 @@
 <div class="main-body">
-  <div class="md-navbar-tools">
-    <span class="logo">
-      <img src="/images/logo_lg.png" alt="bizlogo" width="23%"/>
-    </span>
-    <div style="float:right">
-      <a class="mainNavbar" ng-click="showAdvanced()" >about</a>
-    </div>
-    <span class="nav-divider">|</span>
-    <div style="float:right">
-      <a class="mainNavbar"  ng-click="showContact()">contact</a>
-    </div>
-    <span class="nav-divider">|</span>
-    <div style="float:right">
-      <a class="mainNavbar"  ng-click="showDyk()">Did you Know?</a>
-    </div>
-  </div>
+
   <div class="video-block">
     <div class="master-video-wrapper">
+
       <div class="master-body col-md-10 col-sm-11 col-xs-12" style="opacity: 0.99; filter: blur(0.111111px); transform: translateY(1.42857%);">
+        <div class="md-navbar-tools">
+          <span class="logo">
+            <img src="/images/logo_lg.png" alt="bizlogo" width="23%"/>
+          </span>
+          <div style="float:right">
+            <a class="mainNavbar" ng-click="showAdvanced()" >about</a>
+          </div>
+          <span class="nav-divider">|</span>
+          <div style="float:right">
+            <a class="mainNavbar"  ng-click="showContact()">contact</a>
+          </div>
+          <span class="nav-divider">|</span>
+          <div style="float:right">
+            <a class="mainNavbar"  ng-click="showDyk()">Did you Know?</a>
+          </div>
+        </div>
+
            <div class="master-title">Only a life lived for others is worth living</div>
            <div class="master-sub-title">Inspired to inspire</div>
            <md-button class="md-raised md-primary search-vol-button" aria-label="Use Android" ng-click="go('/search')">Search Volunteer</md-button>
@@ -27,6 +30,7 @@
         <source src="videos/bgHd.mp4" type="video/mp4">
      </video>
     </div>
+  </div>
   <div class="twitter-globe-block">
     <div class="globe">
       <m2s-globe
@@ -46,16 +50,22 @@
          graticule="false">
        </m2s-globe>
     </div>
-    <div class="tweet">
-      <div style="float:right;width:60%;">
-        <twitter-timeline class="twitter-iframe" twitter-timeline-id="924764337289306112" twitter-timeline-options='{"chrome": "hidden"}'>
-          <a class="twitter-timeline" href="https://twitter.com/hashtag/GiveLightFoundation" data-chrome="noheader noborders transparent nofooter" data-widget-id="924764337289306112">#GiveLightFoundation Tweets</a>
-        </twitter-timeline>
+    <md-card class="tweet-list-card">
+      <div class="tweet">
+        <div>
+          <twitter-timeline class="twitter-iframe" twitter-timeline-id="924764337289306112" twitter-timeline-options='{"chrome": "hidden"}'>
+            <a class="twitter-timeline" href="https://twitter.com/hashtag/GiveLightFoundation" data-chrome="noheader noborders transparent nofooter" data-widget-id="924764337289306112">#GiveLightFoundation Tweets</a>
+          </twitter-timeline>
+        </div>
       </div>
-    </div>
+    </md-card>
   </div>
 </div>
-</div>
+<footer>
+  @ Copyright 2017. All rights reserved.
+</footer>
+<!-- </div>
+</div> -->
 <!-- <div class="card"> -->
 <!-- <div class="tweet">
   <div style="float:right;width:50%;">

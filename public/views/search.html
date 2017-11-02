@@ -1,12 +1,16 @@
 <div>
   <md-toolbar class="md-primary search-toolbar-header">
     <div class="md-toolbar-tools">
-      <span class="logo">
-        <img src="/images/logo_lg-white.png" alt="bizlogo" width="20%"/>
+      <span  class="logo-s">
+        <img ng-click="clicked_logo('search')" src="/images/logo_lg-white.png" alt="bizlogo" width="20%"/>
       </span>
     </div>
     <div class="search-toolbar">
       <div class="wrapper-search-toolbar">
+        <md-select placeholder="Plan an Event" ng-model="event" md-on-open="loadPlanEvents()" style="min-width: 9em;    margin: 0px;
+    height: fit-content;">
+          <md-option ng-click="selected_plan(event)" ng-value="event" ng-repeat="event in events">{{event.name}}</md-option>
+        </md-select>
         <div class="search-bar">
           <md-input-container md-no-float class="md-block search-input-box">
            <input ng-keyup="entered_search()" ng-model="search_val" placeholder="Search Volunteer">
@@ -24,11 +28,23 @@
           </md-button>
           <!-- <md-button class="md-raised md-primary" ng-click="">Filter</md-button> -->
         </div>
+
       </div>
       <div class="tag-bar">
           <!-- <md-button class="md-small" ng-href="{{googleUrl}}" target="_blank">Default Link</md-button> -->
       </div>
     </div>
+    <!-- <div class="toolbar-actions">
+      <md-input-container>
+           <label>Events</label>
+           <md-select ng-model="event">
+             <md-option><em>None</em></md-option>
+             <md-option ng-repeat="ev in eventslist" ng-value="ev">
+               {{ev}}
+             </md-option>
+           </md-select>
+         </md-input-container>
+    </div> -->
     <md-progress-linear class="md-warn" ng-show="progress_bar_flag" md-mode="indeterminate"></md-progress-linear>
   </md-toolbar>
   <md-content flex layout-padding >
