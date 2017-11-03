@@ -244,6 +244,7 @@ myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDial
         $scope.events = [
           { id:1, name:'walkathon'},
           { id:2, name:'lunch'},
+          { id:2, name:'Fund raiser'},
         ]
     }, 650);
   }
