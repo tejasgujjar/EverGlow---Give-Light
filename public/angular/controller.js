@@ -231,7 +231,7 @@ AdvancedCtrl();
 
 }]);
 
-myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDialog','$mdToast','$location',function($scope,$http,$q, $timeout,$mdDialog,$mdToast,$location){
+myApp.controller('SearchController',['$scope','$http', '$q', '$timeout','$mdDialog','$mdToast','$location','$window',function($scope,$http,$q, $timeout,$mdDialog,$mdToast,$location,$window){
   console.log("search controller");
   $scope.volunteers_list = [];
   var testdata = [{"_id":"59f57a8d8a207563dd30dc3c","Name":"Elaf","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""},{"_id":"89f57a8d8a207563dd30dc3c","Name":"Tejas","Email Address":"lofa87@hotmail.com","Status":"","Sign up Date":42795,"Contact Number":6692219431,"City":"San Jose","State":"CA","Country":"USA","Email Received":"","Status2":"Contacted","Last Status Date":42404,"Owner":"Ansa","Proposed GL Team":"Event Planning","Profession":"","Special Passion":"","T":"","E":"","G":"","D":"","M":"","W":"","P":""}];
@@ -761,5 +761,10 @@ $scope.getNearMe = function(ev) {
         .position(pinTo )
         .hideDelay(3000)
     );
+  };
+  $scope.go = function ( path ) {
+    console.log("nav to search page");
+    // $location.href( path );
+    $window.open('http://localhost:4000/#/topics', '_blank');
   };
 }]);
