@@ -34,12 +34,14 @@ var get_event_location_match = function(req,res){
     }
 };
 console.log(req.query.search);
+var searchVar = JSON.parse(req.query.search);
+console.log("Inside ......"+searchVar.name);
   // db.collection("events_listr").find(query).toArray(function(err, result) {
   //   if(err) {
   //     console.log(err);
   //     return;
   //     }
-if(req.query.search == "walkathon"){
+if(searchVar.name == "walkathon"){
      console.log("Inside if");
       //var query = { $or: [ { "E":"Y" }, { "D":"Y" }  ] };
 
@@ -132,7 +134,7 @@ if(req.query.search == "walkathon"){
       //  db.close();
   });
 }
-else if(req.query.search == "lunch"){
+else if(searchVar.name == "lunch"){
   console.log("Inside else if");
   var query = {
      "$and": [
@@ -219,7 +221,7 @@ else if(req.query.search == "lunch"){
 });
 }
 else{
-  
+
 
     console.log("Inside else");
     var query = {
