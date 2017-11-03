@@ -219,7 +219,7 @@ else if(req.query.search == "lunch"){
 });
 }
 else{
-  {
+  
 
     console.log("Inside else");
     var query = {
