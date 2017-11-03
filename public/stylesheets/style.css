@@ -92,9 +92,9 @@ a {
     max-height: 64px;
     padding: 0 16px;
     margin: 0;
-    /*background: white;*/
-    position: absolute;
-    top: -9.5em;
+    background: white;
+    /*position: absolute;
+    top: -9.5em;*/
 }
 .master-video{
 width: 100%;
@@ -313,7 +313,7 @@ md-tooltip{
   background-color: #408289 !important;
 }
 .main-body{
-  background-color: lavender;
+  /*background-color: lavender;*/
   /*background-image: url('https://fsb.zobj.net/crop.php?r=qCWSmHgHZ-xQT2_Dvh25rXpXO_83sisKOMmZcWPNVg5SqYoDS_gOfDsMfBeA8_yDHsR6DQpmp0YU0PHXTigFOGw8xPlJuxUfwUy_0uZnPNALmnvnxeb-yQowpnGEOhODNuf7HWGQ7TKHEyRNaS9RstddnPNWnd-Ndfxrkg') !important;*/
 }
 .nav-divider{
@@ -383,4 +383,7 @@ md-toolbar{
   height:fit-content !important;
   border-radius:20px !important;
   margin-left: 40%;
+}
+.twitter-iframe iframe html body.timeline-Widget.timeline-Body.timeline-Viewport ol li div p{
+  font-size: 10px !important;
 }

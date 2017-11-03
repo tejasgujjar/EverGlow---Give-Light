@@ -33,13 +33,49 @@ console.log("Loading main page");
 //   })
 
 
-myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',function($scope,$http,$location,$mdDialog){
+myApp.controller('HomeController',['$scope','$http','$location','$mdDialog','$mdToast',function($scope,$http,$location,$mdDialog,$mdToast){
   $scope.go = function ( path ) {
     console.log("nav to search page");
     $location.path( path );
   };
 
   //starts
+  var last = {
+      bottom: true,
+      top: false,
+      left: false,
+      right: true
+    };
+
+$scope.toastPosition = angular.extend({},last);
+  $scope.getToastPosition = function() {
+    sanitizePosition();
+
+    return Object.keys($scope.toastPosition)
+      .filter(function(pos) { return $scope.toastPosition[pos]; })
+      .join(' ');
+  };
+
+  function sanitizePosition() {
+    var current = $scope.toastPosition;
+
+    if ( current.bottom && last.top ) current.top = false;
+    if ( current.top && last.bottom ) current.bottom = false;
+    if ( current.right && last.left ) current.left = false;
+    if ( current.left && last.right ) current.right = false;
+
+    last = angular.extend({},current);
+  }
+  $scope.showSimpleToast = function(msg) {
+    var pinTo = $scope.getToastPosition();
+
+    $mdToast.show(
+      $mdToast.simple()
+        .textContent(msg)
+        .position(pinTo )
+        .hideDelay(3000)
+    );
+  };
   $scope.showAdvanced = function() {
     $mdDialog.show({
       controller: 'HomeController',
@@ -57,6 +93,17 @@ myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',func
       clickOutsideToClose:true,
     })
   };
+$scope.user_login_submit = function(user){
+  // ci('uernmae: '+user.username);
+  if(user.username == "admin" && user.password == "admin"){
+      $scope.go('/search');
+      $scope.showSimpleToast("Welcome to GiveLight admin site");
+  }else{
+    $scope.showSimpleToast("Invalid username or password!");
+  }
+
+}
+
   $scope.showContact = function() {
       $mdDialog.show({
         controller: 'HomeController',
