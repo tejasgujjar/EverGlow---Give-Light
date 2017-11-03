@@ -677,6 +677,45 @@ $scope.getNearMe = function(ev) {
     volunteerChart.series[0].setData(data);
   }
 
+  Highcharts.chart('container1', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'bar'
+    },
+    title: {
+        text: "Monthly New Volunteers"
+    },
+
+    xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Number of volunteers',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    series: [{
+        name: 'Number of new volunteers registered',
+        data: [24, 75, 106, 129, 144, 176, 135, 148, 216, 194, 0, 0]
+    }]
+  });
+  
   function send_mail(to, subject, content){
       var email_data = {
         "emaildata":{
