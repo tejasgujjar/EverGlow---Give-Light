@@ -1,33 +1,30 @@
 <div class="main-body">
-
+  <div class="md-navbar-tools">
+    <span class="logo">
+      <img src="/images/logo_lg.png" alt="bizlogo" width="23%"/>
+    </span>
+    <div style="float:right">
+      <a class="mainNavbar"  ng-click="showLogin()">Log In</a>
+    </div>
+    <span class="nav-divider">|</span>
+    <div style="float:right">
+      <a class="mainNavbar" ng-click="showAdvanced()" >about</a>
+    </div>
+    <span class="nav-divider">|</span>
+    <div style="float:right">
+      <a class="mainNavbar"  ng-click="showContact()">contact</a>
+    </div>
+    <span class="nav-divider">|</span>
+    <div style="float:right">
+      <a class="mainNavbar"  ng-click="showDyk()">Did you Know?</a>
+    </div>
+  </div>
   <div class="video-block">
     <div class="master-video-wrapper">
-
       <div class="master-body col-md-10 col-sm-11 col-xs-12" style="opacity: 0.99; filter: blur(0.111111px); transform: translateY(1.42857%);">
-        <div class="md-navbar-tools">
-          <span class="logo">
-            <img src="/images/logo_lg.png" alt="bizlogo" width="23%"/>
-          </span>
-          <div style="float:right">
-            <a class="mainNavbar"  ng-click="showLogin()">Log In</a>
-          </div>
-          <span class="nav-divider">|</span>
-          <div style="float:right">
-            <a class="mainNavbar" ng-click="showAdvanced()" >about</a>
-          </div>
-          <span class="nav-divider">|</span>
-          <div style="float:right">
-            <a class="mainNavbar"  ng-click="showContact()">contact</a>
-          </div>
-          <span class="nav-divider">|</span>
-          <div style="float:right">
-            <a class="mainNavbar"  ng-click="showDyk()">Did you Know?</a>
-          </div>
-        </div>
-
            <div class="master-title">Only a life lived for others is worth living</div>
            <div class="master-sub-title">Inspired to inspire</div>
-           <md-button class="md-raised md-primary search-vol-button" aria-label="Use Android" ng-click="go('/search')">Search Volunteer</md-button>
+           <md-button class="md-raised md-primary search-vol-button" aria-label="Use Android" ng-click="showLogin()">Search Volunteer</md-button>
      </div>
       <video autoplay="autoplay" loop="loop">
         <!-- <source src="videos/backGroundVideo.mp4" type="video/mp4"> -->
@@ -65,9 +62,9 @@
     </md-card>
   </div>
 </div>
-<footer>
+<!-- <footer>
   @ Copyright 2017. All rights reserved.
-</footer>
+</footer> -->
 <!-- </div>
 </div> -->
 <!-- <div class="card"> -->
