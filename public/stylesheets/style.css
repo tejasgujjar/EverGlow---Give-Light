@@ -190,7 +190,7 @@ footer {
   /*background-image: url('/images/bg.gif') !important;*/
 }
 .search-toolbar{
-  height: 5em;
+  height: 3em;
 }
 .search-bar{
   width: 95%;
@@ -386,4 +386,14 @@ md-toolbar{
 }
 .twitter-iframe iframe html body.timeline-Widget.timeline-Body.timeline-Viewport ol li div p{
   font-size: 10px !important;
+}
+.select-event{
+  width: 25%;
+  margin: auto;
+  margin-bottom: 1em;
+}
+md-select-value span:first-child{
+  color: rgba(0, 0, 0, 0.8) !important;
+  text-align: center !important;
+  font-size: 0.8em;
 }
