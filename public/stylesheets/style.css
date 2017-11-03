@@ -392,7 +392,7 @@ md-toolbar{
   margin: auto;
   margin-bottom: 1em;
 }
-md-select-value span:first-child{
+.event-tool md-select-value span:first-child{
   color: rgba(0, 0, 0, 0.8) !important;
   text-align: center !important;
   font-size: 0.8em;
