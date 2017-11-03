@@ -32,7 +32,6 @@ console.log("Loading main page");
 //     }
 //   })
 
-
 myApp.controller('HomeController',['$scope','$http','$location','$mdDialog',function($scope,$http,$location,$mdDialog){
   $scope.go = function ( path ) {
     console.log("nav to search page");
@@ -411,6 +410,13 @@ $scope.get_default_search_results = function(){
     $scope.phone = volunteer['Contact Number'];
     console.log("volunteer contact: "+$scope.phone);
     $scope.city = volunteer.City;
+    $scope.skills = '';
+    var skills = volunteer.all_skills;
+    console.log("skills length is" +skills.length);
+    console.log(skills);
+    $scope.skills = skills.join(',');
+
+    console.log("skils is : "+$scope.skills);
     $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
     'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
     'WY').split(' ').map(function(state) {
